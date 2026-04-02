@@ -52,5 +52,8 @@ desktop.ini
 logs/
 *.log
 
+# Project context (local only)
+CONTEXT.md
+
 # Claude Code
 .claude/
