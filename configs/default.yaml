@@ -1,0 +1,39 @@
+# ClaimVerify - Default Configuration
+# Scientific Claim Verification with RAG
+
+data:
+  dataset: "allenai/scifact"
+  cache_dir: null  # defaults to HF cache
+  corpus_split: "corpus"
+
+retrieval:
+  bm25:
+    k1: 1.2
+    b: 0.75
+    top_k: 100
+
+  dense:
+    model: "BAAI/bge-m3"
+    query_prefix: ""
+    doc_prefix: ""
+    batch_size: 64
+    top_k: 100
+    index_path: "data/processed/dense_index"
+
+  fusion:
+    method: "rrf"  # reciprocal rank fusion
+    rrf_k: 60
+    top_k: 50  # candidates passed to reranker
+
+  reranker:
+    enabled: true
+    model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    top_k: 10  # final top-k after reranking
+
+evaluation:
+  ks: [5, 10, 20]  # k values for Recall@k, nDCG@k
+  split: "dev"
+
+output:
+  results_dir: "results"
+  index_dir: "data/processed"

@@ -1,0 +1,22 @@
+{
+  "phase": "01_bm25_baseline",
+  "dataset": "SciFact",
+  "split": "dev",
+  "num_queries": 300,
+  "num_queries_with_qrels": 188,
+  "corpus_size": 5183,
+  "bm25_params": {
+    "k1": 1.2,
+    "b": 0.75
+  },
+  "metrics": {
+    "recall@5": 0.8781028368794327,
+    "recall@10": 0.9405141843971631,
+    "recall@20": 0.9595744680851064,
+    "ndcg@5": 0.8083606723170007,
+    "ndcg@10": 0.8298639260704327,
+    "ndcg@20": 0.8349410125502142,
+    "mrr": 0.7983867237179898
+  },
+  "beir_bm25_ndcg10": 0.665
+}
