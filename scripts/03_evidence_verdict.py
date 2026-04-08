@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 3: Evidence selection + verdict prediction on SciFact."""
+"""Deprecated: moved to 04_evidence_verdict.py"""
 
-print("Phase 3: Evidence + Verdict — not yet implemented.")
+print("This script has moved to scripts/04_evidence_verdict.py")
+print("Run: python scripts/04_evidence_verdict.py")
