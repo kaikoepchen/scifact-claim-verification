@@ -124,3 +124,33 @@ def macro_f1(
         "macro_f1": macro,
         "per_class": per_class,
     }
+
+
+def sentence_selection_metrics(
+    predicted: dict[str, list[int]],
+    gold: dict[str, list[int]],
+) -> dict[str, float]:
+    """Evaluate rationale sentence selection quality.
+
+    Args:
+        predicted: {doc_id: [sentence_indices]} from the selector.
+        gold: {doc_id: [sentence_indices]} from gold annotations.
+
+    Returns:
+        Precision, recall, F1 at the sentence level.
+    """
+    tp = fp = fn = 0
+
+    all_doc_ids = set(predicted.keys()) | set(gold.keys())
+    for doc_id in all_doc_ids:
+        pred_set = set(predicted.get(doc_id, []))
+        gold_set = set(gold.get(doc_id, []))
+        tp += len(pred_set & gold_set)
+        fp += len(pred_set - gold_set)
+        fn += len(gold_set - pred_set)
+
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
+
+    return {"sentence_precision": precision, "sentence_recall": recall, "sentence_f1": f1}

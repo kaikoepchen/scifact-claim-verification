@@ -8,6 +8,7 @@ from claimverify.evaluation.metrics import (
     mrr,
     ndcg_at_k,
     macro_f1,
+    sentence_selection_metrics,
 )
 
 
@@ -105,3 +106,15 @@ class TestMetrics:
         result = macro_f1(preds, labels)
         assert 0.0 <= result["macro_f1"] <= 1.0
         assert 0.0 <= result["accuracy"] <= 1.0
+
+    def test_sentence_selection_metrics(self):
+        pred = {"d1": [0, 2, 4], "d2": [1]}
+        gold = {"d1": [0, 2], "d2": [1, 3]}
+        result = sentence_selection_metrics(pred, gold)
+        # tp=3 (d1:0, d1:2, d2:1), fp=1 (d1:4), fn=1 (d2:3)
+        assert abs(result["sentence_precision"] - 3 / 4) < 1e-6
+        assert abs(result["sentence_recall"] - 3 / 4) < 1e-6
+
+    def test_sentence_selection_empty(self):
+        result = sentence_selection_metrics({}, {})
+        assert result["sentence_f1"] == 0.0
