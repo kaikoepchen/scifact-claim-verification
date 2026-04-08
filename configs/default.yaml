@@ -43,6 +43,12 @@ reasoning:
   aggregation:
     conflict_threshold: 0.3
 
+calibration:
+  threshold: 0.35
+  conflict_override: true
+  min_coverage: 0.5
+  n_thresholds: 50
+
 evaluation:
   ks: [5, 10, 20]  # k values for Recall@k, nDCG@k
   split: "dev"
