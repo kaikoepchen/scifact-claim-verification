@@ -6,6 +6,12 @@ A scientific claim verification system built on hybrid retrieval-augmented gener
 
 Built for the RAG course at the University of Zurich, FS 2026.
 
+## Architecture
+
+<p align="center">
+  <img src="docs/architecture.svg" alt="Pipeline Architecture" width="750"/>
+</p>
+
 ## Results
 
 ### Retrieval Ablation (SciFact Dev, 300 queries)
@@ -35,35 +41,11 @@ Pipeline: hybrid retrieval (top-5) -> rationale sentence selection -> RoBERTa-MN
 
 *Results will be added after running `scripts/04_evidence_verdict.py`.*
 
-## Architecture
+### Abstention (SciFact Dev)
 
-```
-Claim
-  |
-Claim Decomposition
-  |
-  +---> BM25 (sparse) --+---> Disagreement Analysis (Jaccard, rank corr.)
-  |                      |           |
-  +---> Dense (FAISS) ---+           | uncertainty signal
-  |                      |           |
-  +---> RRF Fusion ------+           |
-         |                           |
-    [Reranker]                       |
-         |                           |
-  Rationale Selection                |
-         |                           |
-  +------+------+                    |
-  |             |                    |
-Verdict    Generator                 |
-(NLI)    (cited expl.)               |
-  |             |                    |
-  +------+------+--------------------+
-         |
-  Multi-Signal Abstention Gate
-  (answer / abstain / flag conflict)
-         |
-    Final Output
-```
+Coverage-vs-accuracy trade-off using multi-signal abstention gate (NLI confidence, retriever disagreement, evidence conflict).
+
+*Results will be added after running `scripts/05_abstention.py`.*
 
 ## Setup
 
@@ -82,21 +64,26 @@ cd ../..
 ## Usage
 
 ```bash
-# Phase 1: BM25 baseline
+# BM25 baseline
 python scripts/01_baseline_retrieval.py
 
-# Phase 2: Dense + hybrid ablation
+# Dense + hybrid ablation
 python scripts/02_dense_retrieval.py
 python scripts/02_dense_retrieval.py --model intfloat/e5-base-v2
 
-# Phase 3: Retriever disagreement analysis
+# Retriever disagreement analysis
 python scripts/03_disagreement_analysis.py
 python scripts/03_disagreement_analysis.py --k 5
 
-# Phase 4: Evidence selection + verdict prediction
+# Evidence selection + verdict prediction
 python scripts/04_evidence_verdict.py
 python scripts/04_evidence_verdict.py --mode bm25
 python scripts/04_evidence_verdict.py --nli-model roberta-large-mnli --top-k 10
+
+# Abstention evaluation
+python scripts/05_abstention.py
+python scripts/05_abstention.py --threshold 0.35
+python scripts/05_abstention.py --mode bm25 --no-conflict-override
 
 # Run tests
 pytest tests/ -v
@@ -108,14 +95,15 @@ pytest tests/ -v
 src/claimverify/
     data/           SciFact corpus loader
     retrieval/      BM25, dense (FAISS), RRF fusion, reranker, disagreement analysis
-    evaluation/     Retrieval metrics (Recall, nDCG, MRR), verdict metrics (macro-F1), sentence selection metrics
     reasoning/      Rationale selection, NLI verdict prediction, multi-evidence aggregation
+    calibration/    Uncertainty signals, abstention gate, threshold tuning
+    evaluation/     Retrieval metrics (Recall, nDCG, MRR), verdict metrics (macro-F1), sentence selection metrics
     generation/     Cited explanation generation (planned)
-    calibration/    Abstention gate (planned)
-scripts/            Evaluation scripts per phase
+scripts/            Evaluation scripts
 configs/            Hydra configuration
-tests/              Unit tests (42 total)
+tests/              Unit tests (54 total)
 results/            Evaluation outputs (JSON)
+docs/               Architecture diagram
 ```
 
 ## Dataset
