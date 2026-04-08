@@ -29,6 +29,12 @@ Built for the RAG course at the University of Zurich, FS 2026.
 
 When retrievers agree, retrieval almost always succeeds (99%). When they disagree, success drops and 11% of cases have only one retriever finding the relevant document.
 
+### Verdict Prediction (SciFact Dev, per-document NLI)
+
+Pipeline: hybrid retrieval (top-5) -> rationale sentence selection -> RoBERTa-MNLI verdict.
+
+*Results will be added after running `scripts/04_evidence_verdict.py`.*
+
 ## Architecture
 
 ```
@@ -87,6 +93,11 @@ python scripts/02_dense_retrieval.py --model intfloat/e5-base-v2
 python scripts/03_disagreement_analysis.py
 python scripts/03_disagreement_analysis.py --k 5
 
+# Phase 4: Evidence selection + verdict prediction
+python scripts/04_evidence_verdict.py
+python scripts/04_evidence_verdict.py --mode bm25
+python scripts/04_evidence_verdict.py --nli-model roberta-large-mnli --top-k 10
+
 # Run tests
 pytest tests/ -v
 ```
@@ -97,13 +108,13 @@ pytest tests/ -v
 src/claimverify/
     data/           SciFact corpus loader
     retrieval/      BM25, dense (FAISS), RRF fusion, reranker, disagreement analysis
-    evaluation/     Retrieval metrics (Recall, nDCG, MRR) and verdict metrics (macro-F1)
-    reasoning/      Verdict prediction (planned)
+    evaluation/     Retrieval metrics (Recall, nDCG, MRR), verdict metrics (macro-F1), sentence selection metrics
+    reasoning/      Rationale selection, NLI verdict prediction, multi-evidence aggregation
     generation/     Cited explanation generation (planned)
     calibration/    Abstention gate (planned)
 scripts/            Evaluation scripts per phase
 configs/            Hydra configuration
-tests/              Unit tests (33 total)
+tests/              Unit tests (42 total)
 results/            Evaluation outputs (JSON)
 ```
 
