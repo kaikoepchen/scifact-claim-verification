@@ -1,0 +1,94 @@
+{
+  "method": "extractive",
+  "nli_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+  "top_k": 3,
+  "n_claims": 188,
+  "citation_quality": {
+    "citation_precision": 1.0,
+    "citation_recall": 0.16467780429594273,
+    "unsupported_rate": 0.0,
+    "empty_citation_rate": 0.0
+  },
+  "examples": [
+    {
+      "claim_id": "3",
+      "claim": "1,000 genomes project enables mapping of genetic sequence variation consisting of rare variants with larger penetrance effects than common variants.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "5",
+      "claim": "1/2000 in UK have abnormal PrP positivity.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 8,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "42",
+      "claim": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "48",
+      "claim": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "49",
+      "claim": "ADAR1 binds to Dicer to cleave pre-miRNA.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "50",
+      "claim": "AIRE is expressed in some skin tumors.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "51",
+      "claim": "ALDH1 expression is associated with better breast cancer outcomes.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "53",
+      "claim": "ALDH1 expression is associated with poorer prognosis in breast cancer.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "54",
+      "claim": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    },
+    {
+      "claim_id": "56",
+      "claim": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration.",
+      "verdict": "NOT_ENOUGH_INFO",
+      "explanation": "There is not enough evidence to verify this claim.",
+      "n_evidence": 9,
+      "n_cited": 0
+    }
+  ]
+}
