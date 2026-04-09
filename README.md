@@ -37,32 +37,32 @@ When retrievers agree, retrieval almost always succeeds (99%). When they disagre
 
 ### Verdict Prediction (SciFact Dev, per-document NLI)
 
-Pipeline: hybrid retrieval (top-5) -> rationale sentence selection -> RoBERTa-MNLI verdict (zero-shot).
+Pipeline: hybrid retrieval (top-5) -> full abstract -> DeBERTa-v3-large-mnli-fever-anli-ling-wanli (zero-shot).
 
 | Metric | Value |
 |--------|-------|
-| Accuracy | 0.189 |
-| Macro-F1 | 0.197 |
-| SUPPORT P / R / F1 | 0.700 / 0.032 / 0.062 |
-| CONTRADICT P / R / F1 | 0.613 / 0.467 / 0.530 |
+| Accuracy | 0.260 |
+| Macro-F1 | 0.245 |
+| SUPPORT P / R / F1 | 0.663 / 0.292 / 0.405 |
+| CONTRADICT P / R / F1 | 0.862 / 0.205 / 0.331 |
 
-The zero-shot MNLI label mapping is a poor fit — the model over-predicts CONTRADICT and barely detects SUPPORT. Fine-tuning on SciFact or using a domain-specific NLI model (e.g., SciFact-trained) is needed to improve verdict accuracy.
+Zero-shot NLI still struggles with scientific claims — the model defaults to "neutral" for domain-specific evidence. Retrieval recall is strong (87.1% of gold docs found), but the NLI model is the bottleneck. Fine-tuning on SciFact training data would significantly improve verdict accuracy.
 
 ### Abstention (SciFact Dev)
 
 | Metric | No Abstention | With Abstention |
 |--------|---------------|-----------------|
-| Accuracy | 0.189 | 0.141 |
-| Macro-F1 | 0.197 | 0.182 |
-| Coverage | 100% | 77.5% |
+| Accuracy | 0.260 | 0.210 |
+| Macro-F1 | 0.245 | 0.207 |
+| Coverage | 100% | 74.6% |
 
 | Gate Decision | Count |
 |---------------|-------|
-| Answered | 148 |
-| Abstained | 40 |
+| Answered | 143 |
+| Abstained | 45 |
 | Flagged (conflict) | 0 |
 
-The abstention gate correctly identifies uncertain claims (21% abstention rate), but the weak underlying NLI predictor limits the accuracy gains from selective prediction. With a fine-tuned verdict model, abstention should yield clearer accuracy-coverage trade-offs.
+The abstention gate identifies uncertain claims (24% abstention rate) using NLI confidence, retriever disagreement, and evidence conflict signals. The AUC of the coverage-risk curve is 0.119 — improving the underlying NLI model would unlock stronger abstention gains.
 
 ## Setup
 
