@@ -42,6 +42,9 @@ reasoning:
   aggregation:
     conflict_threshold: 0.3
 
+generation:
+  method: "extractive"  # "template" or "extractive"
+
 calibration:
   threshold: 0.35
   conflict_override: true
