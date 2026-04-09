@@ -1,0 +1,8 @@
+{
+  "abstract_precision": 0.13942307692307693,
+  "abstract_recall": 0.13875598086124402,
+  "abstract_f1": 0.1390887290167866,
+  "true_positives": 29,
+  "total_predicted": 208,
+  "total_gold": 209
+}
