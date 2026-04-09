@@ -1,0 +1,303 @@
+{
+  "top_k": 5,
+  "n_claims": 188,
+  "total_annotations": 338,
+  "error_breakdown": {
+    "correct": 49,
+    "wrong_verdict": 210,
+    "retrieval_miss": 40,
+    "rationale_miss": 39
+  },
+  "error_by_label": {
+    "SUPPORT": {
+      "correct": 34,
+      "wrong_verdict": 133,
+      "retrieval_miss": 20,
+      "rationale_miss": 29
+    },
+    "CONTRADICT": {
+      "wrong_verdict": 77,
+      "retrieval_miss": 20,
+      "correct": 15,
+      "rationale_miss": 10
+    }
+  },
+  "disagreement_by_error": {
+    "correct": {
+      "mean": 0.3052532946859097,
+      "n": 49
+    },
+    "retrieval_miss": {
+      "mean": 0.2809896372976867,
+      "n": 40
+    },
+    "wrong_verdict": {
+      "mean": 0.2533637521585337,
+      "n": 210
+    },
+    "rationale_miss": {
+      "mean": 0.24996731105328387,
+      "n": 39
+    }
+  },
+  "claim_length_by_error": {
+    "correct": {
+      "mean": 12.877551020408163,
+      "n": 49
+    },
+    "retrieval_miss": {
+      "mean": 10.675,
+      "n": 40
+    },
+    "wrong_verdict": {
+      "mean": 12.433333333333334,
+      "n": 210
+    },
+    "rationale_miss": {
+      "mean": 11.564102564102564,
+      "n": 39
+    }
+  },
+  "detailed_errors": [
+    {
+      "claim_id": "5",
+      "claim_text": "1/2000 in UK have abnormal PrP positivity.",
+      "gold_doc": "13734012",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.111
+    },
+    {
+      "claim_id": "42",
+      "claim_text": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalass",
+      "gold_doc": "18174210",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.538
+    },
+    {
+      "claim_id": "42",
+      "claim_text": "A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalass",
+      "gold_doc": "18174210",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.538
+    },
+    {
+      "claim_id": "48",
+      "claim_text": "A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection.",
+      "gold_doc": "13734012",
+      "gold_label": "CONTRADICT",
+      "error_type": "retrieval_miss",
+      "retriever_agreement": 0.111
+    },
+    {
+      "claim_id": "49",
+      "claim_text": "ADAR1 binds to Dicer to cleave pre-miRNA.",
+      "gold_doc": "5953485",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.429
+    },
+    {
+      "claim_id": "49",
+      "claim_text": "ADAR1 binds to Dicer to cleave pre-miRNA.",
+      "gold_doc": "5953485",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.429
+    },
+    {
+      "claim_id": "50",
+      "claim_text": "AIRE is expressed in some skin tumors.",
+      "gold_doc": "12580014",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.25
+    },
+    {
+      "claim_id": "53",
+      "claim_text": "ALDH1 expression is associated with poorer prognosis in breast cancer.",
+      "gold_doc": "45638119",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "54",
+      "claim_text": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+      "gold_doc": "49556906",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.333
+    },
+    {
+      "claim_id": "54",
+      "claim_text": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+      "gold_doc": "49556906",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.333
+    },
+    {
+      "claim_id": "54",
+      "claim_text": "AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.",
+      "gold_doc": "49556906",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.333
+    },
+    {
+      "claim_id": "56",
+      "claim_text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation caus",
+      "gold_doc": "4709641",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.25
+    },
+    {
+      "claim_id": "57",
+      "claim_text": "APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation, del",
+      "gold_doc": "4709641",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.25
+    },
+    {
+      "claim_id": "70",
+      "claim_text": "Activation of PPM1D suppresses p53 function.",
+      "gold_doc": "5956380",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "70",
+      "claim_text": "Activation of PPM1D suppresses p53 function.",
+      "gold_doc": "4414547",
+      "gold_label": "SUPPORT",
+      "error_type": "retrieval_miss",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "100",
+      "claim_text": "All hematopoietic stem cells segregate their chromosomes randomly.",
+      "gold_doc": "4381486",
+      "gold_label": "SUPPORT",
+      "error_type": "rationale_miss",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "113",
+      "claim_text": "Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal ins",
+      "gold_doc": "6157837",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.333
+    },
+    {
+      "claim_id": "113",
+      "claim_text": "Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal ins",
+      "gold_doc": "6157837",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.333
+    },
+    {
+      "claim_id": "115",
+      "claim_text": "Anthrax spores can be disposed of easily after they are dispersed.",
+      "gold_doc": "33872649",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.053
+    },
+    {
+      "claim_id": "124",
+      "claim_text": "Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata.",
+      "gold_doc": "4883040",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.429
+    },
+    {
+      "claim_id": "124",
+      "claim_text": "Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata.",
+      "gold_doc": "4883040",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.429
+    },
+    {
+      "claim_id": "129",
+      "claim_text": "Articles published in open access format are less likely to be cited than traditional journals.",
+      "gold_doc": "27768226",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "129",
+      "claim_text": "Articles published in open access format are less likely to be cited than traditional journals.",
+      "gold_doc": "27768226",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "129",
+      "claim_text": "Articles published in open access format are less likely to be cited than traditional journals.",
+      "gold_doc": "27768226",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "129",
+      "claim_text": "Articles published in open access format are less likely to be cited than traditional journals.",
+      "gold_doc": "27768226",
+      "gold_label": "CONTRADICT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "130",
+      "claim_text": "Articles published in open access format are more likely to be cited than traditional journals.",
+      "gold_doc": "27768226",
+      "gold_label": "SUPPORT",
+      "error_type": "rationale_miss",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "130",
+      "claim_text": "Articles published in open access format are more likely to be cited than traditional journals.",
+      "gold_doc": "27768226",
+      "gold_label": "SUPPORT",
+      "error_type": "rationale_miss",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "130",
+      "claim_text": "Articles published in open access format are more likely to be cited than traditional journals.",
+      "gold_doc": "27768226",
+      "gold_label": "SUPPORT",
+      "error_type": "rationale_miss",
+      "retriever_agreement": 0.176
+    },
+    {
+      "claim_id": "133",
+      "claim_text": "Assembly of invadopodia is triggered by focal generation of phosphatidylinositol-3,4-biphosphate and",
+      "gold_doc": "16280642",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.111
+    },
+    {
+      "claim_id": "137",
+      "claim_text": "Asymptomatic visual impairment screening in elderly populations does not lead to improved vision.",
+      "gold_doc": "26016929",
+      "gold_label": "SUPPORT",
+      "error_type": "wrong_verdict",
+      "retriever_agreement": 0.176
+    }
+  ]
+}
