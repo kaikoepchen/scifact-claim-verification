@@ -1,1 +1,5 @@
-"""Preprocessing: claim decomposition, query generation."""
+"""Preprocessing: claim decomposition."""
+
+from .decompose import ClaimDecomposer, DecomposedClaim
+
+__all__ = ["ClaimDecomposer", "DecomposedClaim"]
