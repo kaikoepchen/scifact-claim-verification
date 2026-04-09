@@ -109,6 +109,10 @@ python scripts/06_claim_decomposition.py
 python scripts/08_generation.py
 python scripts/08_generation.py --method template
 
+# Leaderboard predictions (AllenAI SciFact format)
+python scripts/09_leaderboard_predictions.py --split dev
+python scripts/09_leaderboard_predictions.py --split test --nli-model models/verdict-scifact
+
 # Run tests
 pytest tests/ -v
 ```
@@ -122,11 +126,11 @@ src/claimverify/
     reasoning/      Rationale selection, NLI verdict prediction, multi-evidence aggregation
     calibration/    Uncertainty signals, abstention gate, threshold tuning
     preprocessing/  Claim decomposition for compound claims
-    evaluation/     Retrieval metrics, verdict metrics, sentence selection, citation fidelity
+    evaluation/     Retrieval metrics, verdict metrics, citation fidelity, leaderboard formatter
     generation/     Cited explanation generation (template + extractive)
 scripts/            Evaluation scripts
 configs/            Hydra configuration
-tests/              Unit tests (77 total)
+tests/              Unit tests (88 total)
 results/            Evaluation outputs (JSON)
 docs/               Architecture diagram
 ```
