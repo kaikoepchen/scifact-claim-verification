@@ -154,3 +154,64 @@ def sentence_selection_metrics(
     f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
 
     return {"sentence_precision": precision, "sentence_recall": recall, "sentence_f1": f1}
+
+
+def citation_quality(
+    explanations: list[dict],
+) -> dict[str, float]:
+    """Evaluate citation fidelity of generated explanations.
+
+    Args:
+        explanations: list of {cited_refs: [int], available_refs: [int], verdict: str}
+
+    Returns:
+        citation_precision: fraction of cited refs that exist in evidence
+        citation_recall: fraction of available refs that are cited
+        unsupported_rate: fraction of explanations with at least one invalid citation
+        empty_citation_rate: fraction of non-NEI explanations with zero citations
+    """
+    if not explanations:
+        return {
+            "citation_precision": 0.0,
+            "citation_recall": 0.0,
+            "unsupported_rate": 0.0,
+            "empty_citation_rate": 0.0,
+        }
+
+    total_cited = 0
+    total_valid = 0
+    total_available = 0
+    total_recalled = 0
+    unsupported_count = 0
+    empty_count = 0
+    non_nei_count = 0
+
+    for ex in explanations:
+        cited = set(ex["cited_refs"])
+        available = set(ex["available_refs"])
+
+        total_cited += len(cited)
+        valid = cited & available
+        total_valid += len(valid)
+        total_available += len(available)
+        total_recalled += len(valid)
+
+        if cited - available:
+            unsupported_count += 1
+
+        if ex["verdict"] != "NOT_ENOUGH_INFO":
+            non_nei_count += 1
+            if not cited:
+                empty_count += 1
+
+    precision = total_valid / total_cited if total_cited > 0 else 0.0
+    recall = total_recalled / total_available if total_available > 0 else 0.0
+    unsupported_rate = unsupported_count / len(explanations)
+    empty_rate = empty_count / non_nei_count if non_nei_count > 0 else 0.0
+
+    return {
+        "citation_precision": precision,
+        "citation_recall": recall,
+        "unsupported_rate": unsupported_rate,
+        "empty_citation_rate": empty_rate,
+    }
