@@ -205,7 +205,7 @@ def main():
                   f"{len(answered_preds)/len(all_predictions)*100:.1f}%")
     table.add_row("", "", "")
     table.add_row("AUC (coverage-risk)", f"{auc}", "")
-    table.add_row("Optimal threshold (≥50% cov.)",
+    table.add_row("Optimal threshold (>=50% cov.)",
                   f"{optimal.get('threshold', '-')}", "")
     table.add_row("Optimal accuracy",
                   f"{optimal.get('accuracy', '-')}", "")
