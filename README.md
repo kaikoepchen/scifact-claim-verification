@@ -102,6 +102,9 @@ python scripts/05_abstention.py
 python scripts/05_abstention.py --threshold 0.35
 python scripts/05_abstention.py --mode bm25 --no-conflict-override
 
+# Claim decomposition analysis
+python scripts/06_claim_decomposition.py
+
 # Run tests
 pytest tests/ -v
 ```
@@ -114,11 +117,12 @@ src/claimverify/
     retrieval/      BM25, dense (FAISS), RRF fusion, reranker, disagreement analysis
     reasoning/      Rationale selection, NLI verdict prediction, multi-evidence aggregation
     calibration/    Uncertainty signals, abstention gate, threshold tuning
+    preprocessing/  Claim decomposition for compound claims
     evaluation/     Retrieval metrics (Recall, nDCG, MRR), verdict metrics (macro-F1), sentence selection metrics
     generation/     Cited explanation generation (planned)
 scripts/            Evaluation scripts
 configs/            Hydra configuration
-tests/              Unit tests (54 total)
+tests/              Unit tests (61 total)
 results/            Evaluation outputs (JSON)
 docs/               Architecture diagram
 ```
