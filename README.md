@@ -37,15 +37,32 @@ When retrievers agree, retrieval almost always succeeds (99%). When they disagre
 
 ### Verdict Prediction (SciFact Dev, per-document NLI)
 
-Pipeline: hybrid retrieval (top-5) -> rationale sentence selection -> RoBERTa-MNLI verdict.
+Pipeline: hybrid retrieval (top-5) -> rationale sentence selection -> RoBERTa-MNLI verdict (zero-shot).
 
-*Results will be added after running `scripts/04_evidence_verdict.py`.*
+| Metric | Value |
+|--------|-------|
+| Accuracy | 0.189 |
+| Macro-F1 | 0.197 |
+| SUPPORT P / R / F1 | 0.700 / 0.032 / 0.062 |
+| CONTRADICT P / R / F1 | 0.613 / 0.467 / 0.530 |
+
+The zero-shot MNLI label mapping is a poor fit — the model over-predicts CONTRADICT and barely detects SUPPORT. Fine-tuning on SciFact or using a domain-specific NLI model (e.g., SciFact-trained) is needed to improve verdict accuracy.
 
 ### Abstention (SciFact Dev)
 
-Coverage-vs-accuracy trade-off using multi-signal abstention gate (NLI confidence, retriever disagreement, evidence conflict).
+| Metric | No Abstention | With Abstention |
+|--------|---------------|-----------------|
+| Accuracy | 0.189 | 0.141 |
+| Macro-F1 | 0.197 | 0.182 |
+| Coverage | 100% | 77.5% |
 
-*Results will be added after running `scripts/05_abstention.py`.*
+| Gate Decision | Count |
+|---------------|-------|
+| Answered | 148 |
+| Abstained | 40 |
+| Flagged (conflict) | 0 |
+
+The abstention gate correctly identifies uncertain claims (21% abstention rate), but the weak underlying NLI predictor limits the accuracy gains from selective prediction. With a fine-tuned verdict model, abstention should yield clearer accuracy-coverage trade-offs.
 
 ## Setup
 
