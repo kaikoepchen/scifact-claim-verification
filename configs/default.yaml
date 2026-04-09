@@ -37,8 +37,7 @@ reasoning:
     min_score: 0.25
 
   verdict:
-    model: "roberta-large-mnli"
-    # MNLI label mapping: 0=contradiction, 1=neutral, 2=entailment
+    model: "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"
 
   aggregation:
     conflict_threshold: 0.3

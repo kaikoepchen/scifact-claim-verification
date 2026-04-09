@@ -7,7 +7,10 @@ from dataclasses import dataclass
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-LABEL_MAP = {0: "CONTRADICT", 1: "NOT_ENOUGH_INFO", 2: "SUPPORT"}
+NLI_LABEL_MAPS = {
+    "roberta-large-mnli": {0: "CONTRADICT", 1: "NOT_ENOUGH_INFO", 2: "SUPPORT"},
+    "default": {0: "SUPPORT", 1: "NOT_ENOUGH_INFO", 2: "CONTRADICT"},
+}
 
 
 @dataclass
@@ -20,14 +23,13 @@ class VerdictResult:
 class VerdictPredictor:
     """Predicts SUPPORT / CONTRADICT / NOT_ENOUGH_INFO for a claim-evidence pair.
 
-    Uses an NLI model fine-tuned on scientific text. The default model
-    (SciFact RoBERTa) maps the NLI entailment/contradiction/neutral labels
-    to our verdict labels.
+    Reads the model's id2label config to automatically map NLI labels
+    (entailment/contradiction/neutral) to verdict labels.
     """
 
     def __init__(
         self,
-        model_name: str = "roberta-large-mnli",
+        model_name: str = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
         device: str | None = None,
         label_map: dict[int, str] | None = None,
     ):
@@ -37,8 +39,22 @@ class VerdictPredictor:
         self.model.to(self.device)
         self.model.eval()
 
-        # MNLI label order: contradiction=0, neutral=1, entailment=2
-        self.label_map = label_map or LABEL_MAP
+        if label_map:
+            self.label_map = label_map
+        elif model_name in NLI_LABEL_MAPS:
+            self.label_map = NLI_LABEL_MAPS[model_name]
+        else:
+            self.label_map = self._build_label_map()
+
+    def _build_label_map(self) -> dict[int, str]:
+        """Infer label map from the model's config."""
+        nli_to_verdict = {
+            "entailment": "SUPPORT",
+            "contradiction": "CONTRADICT",
+            "neutral": "NOT_ENOUGH_INFO",
+        }
+        id2label = self.model.config.id2label
+        return {int(k): nli_to_verdict.get(v.lower(), v.upper()) for k, v in id2label.items()}
 
     @torch.no_grad()
     def predict(self, claim: str, evidence: str) -> VerdictResult:

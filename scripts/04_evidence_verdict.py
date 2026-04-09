@@ -71,7 +71,7 @@ def main():
     parser = argparse.ArgumentParser(description="Phase 4: Evidence + Verdict")
     parser.add_argument("--mode", default="hybrid", choices=["bm25", "dense", "hybrid"])
     parser.add_argument("--dense-model", default="sentence-transformers/all-MiniLM-L6-v2")
-    parser.add_argument("--nli-model", default="roberta-large-mnli")
+    parser.add_argument("--nli-model", default="MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli")
     parser.add_argument("--index-path", default=None)
     parser.add_argument("--top-k", type=int, default=5, help="Documents to retrieve per claim")
     parser.add_argument("--max-sents", type=int, default=3, help="Max rationale sentences per doc")
@@ -128,10 +128,12 @@ def main():
         # Select rationale sentences
         rationales = selector.select_from_docs(claim.text, doc_sentences)
 
-        # Predict verdict per document
+        # Predict verdict per document using full abstract text
         doc_verdicts = {}
-        for doc_id, sents in rationales.items():
-            evidence_text = " ".join(s.text for s in sents)
+        for doc_id in retrieved_doc_ids:
+            if doc_id not in sf.abstracts:
+                continue
+            evidence_text = sf.abstracts[doc_id].text
             verdict = predictor.predict(claim.text, evidence_text)
             doc_verdicts[doc_id] = verdict
 

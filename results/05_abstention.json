@@ -1,21 +1,21 @@
 {
   "mode": "hybrid",
-  "nli_model": "roberta-large-mnli",
+  "nli_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
   "threshold": 0.35,
   "n_claims": 188,
   "metrics_all": {
-    "accuracy": 0.1893491124260355,
-    "macro_f1": 0.19739315359813403,
+    "accuracy": 0.2603550295857988,
+    "macro_f1": 0.24542350744944388,
     "per_class": {
       "SUPPORT": {
-        "precision": 0.7,
-        "recall": 0.032407407407407406,
-        "f1": 0.06194690265486725
+        "precision": 0.6631578947368421,
+        "recall": 0.2916666666666667,
+        "f1": 0.40514469453376206
       },
       "CONTRADICT": {
-        "precision": 0.6129032258064516,
-        "recall": 0.4672131147540984,
-        "f1": 0.5302325581395348
+        "precision": 0.8620689655172413,
+        "recall": 0.20491803278688525,
+        "f1": 0.33112582781456956
       },
       "NOT_ENOUGH_INFO": {
         "precision": 0.0,
@@ -25,361 +25,361 @@
     }
   },
   "metrics_with_abstention": {
-    "accuracy": 0.14122137404580154,
-    "macro_f1": 0.18204827874039067,
-    "coverage": 0.7751479289940828
+    "accuracy": 0.21031746031746032,
+    "macro_f1": 0.20693221523410207,
+    "coverage": 0.7455621301775148
   },
   "gate_stats": {
-    "n_answer": 148,
-    "n_abstain": 40,
+    "n_answer": 143,
+    "n_abstain": 45,
     "n_conflict": 0
   },
   "coverage_risk_curve": [
     {
       "threshold": 0.0,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.0128,
+      "threshold": 0.0136,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.0257,
+      "threshold": 0.0271,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.0385,
+      "threshold": 0.0407,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.0513,
+      "threshold": 0.0542,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.0642,
+      "threshold": 0.0678,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.077,
+      "threshold": 0.0813,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.0898,
+      "threshold": 0.0949,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.1027,
+      "threshold": 0.1084,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.1155,
+      "threshold": 0.122,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.1283,
+      "threshold": 0.1355,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.1412,
+      "threshold": 0.1491,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.154,
+      "threshold": 0.1626,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.1668,
+      "threshold": 0.1762,
       "coverage": 1.0,
-      "accuracy": 0.1893,
+      "accuracy": 0.2604,
       "n_answered": 338,
-      "n_correct": 64
+      "n_correct": 88
     },
     {
-      "threshold": 0.1797,
-      "coverage": 0.9882,
-      "accuracy": 0.1856,
-      "n_answered": 334,
-      "n_correct": 62
+      "threshold": 0.1897,
+      "coverage": 1.0,
+      "accuracy": 0.2604,
+      "n_answered": 338,
+      "n_correct": 88
     },
     {
-      "threshold": 0.1925,
-      "coverage": 0.9882,
-      "accuracy": 0.1856,
-      "n_answered": 334,
-      "n_correct": 62
+      "threshold": 0.2033,
+      "coverage": 0.997,
+      "accuracy": 0.2611,
+      "n_answered": 337,
+      "n_correct": 88
     },
     {
-      "threshold": 0.2053,
-      "coverage": 0.9852,
-      "accuracy": 0.1832,
-      "n_answered": 333,
-      "n_correct": 61
+      "threshold": 0.2168,
+      "coverage": 0.997,
+      "accuracy": 0.2611,
+      "n_answered": 337,
+      "n_correct": 88
     },
     {
-      "threshold": 0.2182,
-      "coverage": 0.9763,
-      "accuracy": 0.1758,
-      "n_answered": 330,
-      "n_correct": 58
+      "threshold": 0.2304,
+      "coverage": 0.9793,
+      "accuracy": 0.2538,
+      "n_answered": 331,
+      "n_correct": 84
     },
     {
-      "threshold": 0.231,
-      "coverage": 0.9645,
-      "accuracy": 0.1718,
-      "n_answered": 326,
+      "threshold": 0.2439,
+      "coverage": 0.9615,
+      "accuracy": 0.2585,
+      "n_answered": 325,
+      "n_correct": 84
+    },
+    {
+      "threshold": 0.2575,
+      "coverage": 0.9379,
+      "accuracy": 0.2555,
+      "n_answered": 317,
+      "n_correct": 81
+    },
+    {
+      "threshold": 0.271,
+      "coverage": 0.932,
+      "accuracy": 0.2571,
+      "n_answered": 315,
+      "n_correct": 81
+    },
+    {
+      "threshold": 0.2846,
+      "coverage": 0.8876,
+      "accuracy": 0.2433,
+      "n_answered": 300,
+      "n_correct": 73
+    },
+    {
+      "threshold": 0.2981,
+      "coverage": 0.8639,
+      "accuracy": 0.2466,
+      "n_answered": 292,
+      "n_correct": 72
+    },
+    {
+      "threshold": 0.3117,
+      "coverage": 0.8343,
+      "accuracy": 0.2411,
+      "n_answered": 282,
+      "n_correct": 68
+    },
+    {
+      "threshold": 0.3252,
+      "coverage": 0.787,
+      "accuracy": 0.2256,
+      "n_answered": 266,
+      "n_correct": 60
+    },
+    {
+      "threshold": 0.3388,
+      "coverage": 0.7633,
+      "accuracy": 0.2171,
+      "n_answered": 258,
       "n_correct": 56
     },
     {
-      "threshold": 0.2438,
-      "coverage": 0.9586,
-      "accuracy": 0.1667,
-      "n_answered": 324,
-      "n_correct": 54
+      "threshold": 0.3523,
+      "coverage": 0.7456,
+      "accuracy": 0.2103,
+      "n_answered": 252,
+      "n_correct": 53
     },
     {
-      "threshold": 0.2567,
-      "coverage": 0.9379,
-      "accuracy": 0.1577,
-      "n_answered": 317,
-      "n_correct": 50
+      "threshold": 0.3659,
+      "coverage": 0.6834,
+      "accuracy": 0.1861,
+      "n_answered": 231,
+      "n_correct": 43
     },
     {
-      "threshold": 0.2695,
-      "coverage": 0.929,
-      "accuracy": 0.1592,
-      "n_answered": 314,
-      "n_correct": 50
+      "threshold": 0.3794,
+      "coverage": 0.6213,
+      "accuracy": 0.1714,
+      "n_answered": 210,
+      "n_correct": 36
     },
     {
-      "threshold": 0.2823,
-      "coverage": 0.9083,
-      "accuracy": 0.1629,
-      "n_answered": 307,
-      "n_correct": 50
+      "threshold": 0.393,
+      "coverage": 0.5799,
+      "accuracy": 0.1582,
+      "n_answered": 196,
+      "n_correct": 31
     },
     {
-      "threshold": 0.2952,
-      "coverage": 0.9053,
-      "accuracy": 0.1634,
-      "n_answered": 306,
-      "n_correct": 50
+      "threshold": 0.4065,
+      "coverage": 0.5533,
+      "accuracy": 0.1497,
+      "n_answered": 187,
+      "n_correct": 28
     },
     {
-      "threshold": 0.308,
-      "coverage": 0.8757,
-      "accuracy": 0.1588,
-      "n_answered": 296,
-      "n_correct": 47
-    },
-    {
-      "threshold": 0.3208,
-      "coverage": 0.855,
-      "accuracy": 0.1592,
-      "n_answered": 289,
-      "n_correct": 46
-    },
-    {
-      "threshold": 0.3337,
-      "coverage": 0.8254,
-      "accuracy": 0.1613,
-      "n_answered": 279,
-      "n_correct": 45
-    },
-    {
-      "threshold": 0.3465,
-      "coverage": 0.7751,
-      "accuracy": 0.1412,
-      "n_answered": 262,
-      "n_correct": 37
-    },
-    {
-      "threshold": 0.3593,
-      "coverage": 0.7308,
-      "accuracy": 0.1377,
-      "n_answered": 247,
-      "n_correct": 34
-    },
-    {
-      "threshold": 0.3721,
-      "coverage": 0.6805,
-      "accuracy": 0.1174,
-      "n_answered": 230,
+      "threshold": 0.4201,
+      "coverage": 0.5414,
+      "accuracy": 0.1475,
+      "n_answered": 183,
       "n_correct": 27
     },
     {
-      "threshold": 0.385,
-      "coverage": 0.6657,
-      "accuracy": 0.12,
-      "n_answered": 225,
-      "n_correct": 27
+      "threshold": 0.4336,
+      "coverage": 0.497,
+      "accuracy": 0.125,
+      "n_answered": 168,
+      "n_correct": 21
     },
     {
-      "threshold": 0.3978,
-      "coverage": 0.6095,
-      "accuracy": 0.1068,
-      "n_answered": 206,
-      "n_correct": 22
-    },
-    {
-      "threshold": 0.4106,
-      "coverage": 0.5621,
-      "accuracy": 0.1158,
-      "n_answered": 190,
-      "n_correct": 22
-    },
-    {
-      "threshold": 0.4235,
-      "coverage": 0.5266,
-      "accuracy": 0.1011,
-      "n_answered": 178,
-      "n_correct": 18
-    },
-    {
-      "threshold": 0.4363,
+      "threshold": 0.4472,
       "coverage": 0.4675,
-      "accuracy": 0.0633,
+      "accuracy": 0.1076,
       "n_answered": 158,
-      "n_correct": 10
+      "n_correct": 17
     },
     {
-      "threshold": 0.4491,
-      "coverage": 0.426,
-      "accuracy": 0.0208,
-      "n_answered": 144,
-      "n_correct": 3
+      "threshold": 0.4607,
+      "coverage": 0.3935,
+      "accuracy": 0.0677,
+      "n_answered": 133,
+      "n_correct": 9
     },
     {
-      "threshold": 0.462,
-      "coverage": 0.3905,
-      "accuracy": 0.0152,
-      "n_answered": 132,
-      "n_correct": 2
+      "threshold": 0.4743,
+      "coverage": 0.3462,
+      "accuracy": 0.0342,
+      "n_answered": 117,
+      "n_correct": 4
     },
     {
-      "threshold": 0.4748,
-      "coverage": 0.3018,
+      "threshold": 0.4878,
+      "coverage": 0.3047,
+      "accuracy": 0.0388,
+      "n_answered": 103,
+      "n_correct": 4
+    },
+    {
+      "threshold": 0.5014,
+      "coverage": 0.2515,
       "accuracy": 0.0,
-      "n_answered": 102,
+      "n_answered": 85,
       "n_correct": 0
     },
     {
-      "threshold": 0.4876,
-      "coverage": 0.2456,
+      "threshold": 0.5149,
+      "coverage": 0.2219,
       "accuracy": 0.0,
-      "n_answered": 83,
+      "n_answered": 75,
       "n_correct": 0
     },
     {
-      "threshold": 0.5005,
-      "coverage": 0.213,
+      "threshold": 0.5285,
+      "coverage": 0.1923,
       "accuracy": 0.0,
-      "n_answered": 72,
+      "n_answered": 65,
       "n_correct": 0
     },
     {
-      "threshold": 0.5133,
-      "coverage": 0.1598,
+      "threshold": 0.542,
+      "coverage": 0.1538,
       "accuracy": 0.0,
-      "n_answered": 54,
+      "n_answered": 52,
       "n_correct": 0
     },
     {
-      "threshold": 0.5261,
-      "coverage": 0.1272,
+      "threshold": 0.5556,
+      "coverage": 0.1243,
       "accuracy": 0.0,
-      "n_answered": 43,
+      "n_answered": 42,
       "n_correct": 0
     },
     {
-      "threshold": 0.539,
-      "coverage": 0.1154,
+      "threshold": 0.5691,
+      "coverage": 0.1065,
       "accuracy": 0.0,
-      "n_answered": 39,
+      "n_answered": 36,
       "n_correct": 0
     },
     {
-      "threshold": 0.5518,
+      "threshold": 0.5827,
       "coverage": 0.0858,
       "accuracy": 0.0,
       "n_answered": 29,
       "n_correct": 0
     },
     {
-      "threshold": 0.5646,
+      "threshold": 0.5962,
       "coverage": 0.0473,
       "accuracy": 0.0,
       "n_answered": 16,
       "n_correct": 0
     },
     {
-      "threshold": 0.5775,
-      "coverage": 0.0266,
+      "threshold": 0.6098,
+      "coverage": 0.0355,
       "accuracy": 0.0,
-      "n_answered": 9,
+      "n_answered": 12,
       "n_correct": 0
     },
     {
-      "threshold": 0.5903,
-      "coverage": 0.0148,
+      "threshold": 0.6233,
+      "coverage": 0.0178,
       "accuracy": 0.0,
-      "n_answered": 5,
+      "n_answered": 6,
       "n_correct": 0
     },
     {
-      "threshold": 0.6031,
-      "coverage": 0.003,
+      "threshold": 0.6369,
+      "coverage": 0.0089,
       "accuracy": 0.0,
-      "n_answered": 1,
+      "n_answered": 3,
       "n_correct": 0
     },
     {
-      "threshold": 0.616,
-      "coverage": 0.003,
+      "threshold": 0.6504,
+      "coverage": 0.0059,
       "accuracy": 0.0,
-      "n_answered": 1,
+      "n_answered": 2,
       "n_correct": 0
     },
     {
-      "threshold": 0.6288,
+      "threshold": 0.664,
       "coverage": 0.0,
       "accuracy": 0.0,
       "n_answered": 0,
@@ -387,18 +387,18 @@
     }
   ],
   "optimal_threshold": {
-    "threshold": 0.0,
-    "coverage": 1.0,
-    "accuracy": 0.1893,
-    "n_answered": 338,
-    "n_correct": 64
+    "threshold": 0.2033,
+    "coverage": 0.997,
+    "accuracy": 0.2611,
+    "n_answered": 337,
+    "n_correct": 88
   },
-  "auc_coverage_risk": 0.0742,
+  "auc_coverage_risk": 0.1187,
   "per_claim": [
     {
       "claim_id": "3",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5923,
+      "confidence_score": 0.493,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -408,7 +408,7 @@
     {
       "claim_id": "5",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4406,
+      "confidence_score": 0.4866,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -418,7 +418,7 @@
     {
       "claim_id": "42",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4234,
+      "confidence_score": 0.5478,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.5385,
@@ -428,7 +428,7 @@
     {
       "claim_id": "48",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4264,
+      "confidence_score": 0.514,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -438,7 +438,7 @@
     {
       "claim_id": "49",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3883,
+      "confidence_score": 0.5101,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -448,7 +448,7 @@
     {
       "claim_id": "50",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4263,
+      "confidence_score": 0.4566,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -458,9 +458,9 @@
     {
       "claim_id": "51",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2358,
+      "confidence_score": 0.3448,
       "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
+      "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -468,7 +468,7 @@
     {
       "claim_id": "53",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4543,
+      "confidence_score": 0.4466,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -478,7 +478,7 @@
     {
       "claim_id": "54",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4337,
+      "confidence_score": 0.5394,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -488,7 +488,7 @@
     {
       "claim_id": "56",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5043,
+      "confidence_score": 0.5879,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -498,7 +498,7 @@
     {
       "claim_id": "57",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3593,
+      "confidence_score": 0.5799,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -508,7 +508,7 @@
     {
       "claim_id": "70",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.559,
+      "confidence_score": 0.5857,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -518,7 +518,7 @@
     {
       "claim_id": "100",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5713,
+      "confidence_score": 0.382,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -528,7 +528,7 @@
     {
       "claim_id": "113",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4665,
+      "confidence_score": 0.4858,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -538,9 +538,9 @@
     {
       "claim_id": "115",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.389,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2329,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -548,9 +548,9 @@
     {
       "claim_id": "118",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4515,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3398,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.4286,
       "has_conflict": false,
       "evidence_count": 5
@@ -558,7 +558,7 @@
     {
       "claim_id": "124",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4105,
+      "confidence_score": 0.461,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -568,7 +568,7 @@
     {
       "claim_id": "129",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4884,
+      "confidence_score": 0.3855,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -578,9 +578,9 @@
     {
       "claim_id": "130",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3254,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "confidence_score": 0.3621,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -588,7 +588,7 @@
     {
       "claim_id": "133",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3863,
+      "confidence_score": 0.4298,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -598,7 +598,7 @@
     {
       "claim_id": "137",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4101,
+      "confidence_score": 0.4843,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -608,9 +608,9 @@
     {
       "claim_id": "141",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4302,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3199,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -618,9 +618,9 @@
     {
       "claim_id": "142",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3158,
-      "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "confidence_score": 0.5071,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -628,7 +628,7 @@
     {
       "claim_id": "143",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3821,
+      "confidence_score": 0.5162,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -638,7 +638,7 @@
     {
       "claim_id": "146",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4082,
+      "confidence_score": 0.4006,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -648,7 +648,7 @@
     {
       "claim_id": "148",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4773,
+      "confidence_score": 0.5875,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -658,7 +658,7 @@
     {
       "claim_id": "163",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.575,
+      "confidence_score": 0.3939,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.5385,
@@ -668,7 +668,7 @@
     {
       "claim_id": "171",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4398,
+      "confidence_score": 0.4598,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.6667,
@@ -678,7 +678,7 @@
     {
       "claim_id": "179",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4825,
+      "confidence_score": 0.376,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -688,9 +688,9 @@
     {
       "claim_id": "180",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2754,
-      "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "confidence_score": 0.4218,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -698,9 +698,9 @@
     {
       "claim_id": "183",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3083,
-      "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "confidence_score": 0.5672,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -708,9 +708,9 @@
     {
       "claim_id": "185",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2546,
-      "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions",
+      "confidence_score": 0.5127,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -718,9 +718,9 @@
     {
       "claim_id": "208",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3892,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2683,
+      "gate_decision": "abstain",
+      "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -728,7 +728,7 @@
     {
       "claim_id": "212",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5556,
+      "confidence_score": 0.4908,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -737,10 +737,10 @@
     },
     {
       "claim_id": "216",
-      "aggregated_label": "CONTRADICT",
-      "confidence_score": 0.2471,
-      "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.4832,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -748,9 +748,9 @@
     {
       "claim_id": "217",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3143,
-      "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "confidence_score": 0.3644,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -758,7 +758,7 @@
     {
       "claim_id": "218",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3852,
+      "confidence_score": 0.6159,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -768,9 +768,9 @@
     {
       "claim_id": "219",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3423,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "confidence_score": 0.4554,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -778,7 +778,7 @@
     {
       "claim_id": "230",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4334,
+      "confidence_score": 0.3569,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -788,7 +788,7 @@
     {
       "claim_id": "233",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3678,
+      "confidence_score": 0.4529,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -798,7 +798,7 @@
     {
       "claim_id": "236",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3671,
+      "confidence_score": 0.5476,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -808,7 +808,7 @@
     {
       "claim_id": "239",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.542,
+      "confidence_score": 0.4069,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -818,7 +818,7 @@
     {
       "claim_id": "248",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3527,
+      "confidence_score": 0.5483,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -828,17 +828,17 @@
     {
       "claim_id": "249",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2091,
-      "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions; retrievers disagree on relevant documents",
+      "confidence_score": 0.4519,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
     },
     {
       "claim_id": "261",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4664,
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.5114,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -848,7 +848,7 @@
     {
       "claim_id": "274",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4168,
+      "confidence_score": 0.4691,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -858,7 +858,7 @@
     {
       "claim_id": "275",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4589,
+      "confidence_score": 0.4722,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -868,9 +868,9 @@
     {
       "claim_id": "279",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2503,
-      "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions",
+      "confidence_score": 0.6026,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -878,7 +878,7 @@
     {
       "claim_id": "295",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5724,
+      "confidence_score": 0.5725,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -888,7 +888,7 @@
     {
       "claim_id": "298",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3751,
+      "confidence_score": 0.5203,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -898,7 +898,7 @@
     {
       "claim_id": "314",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3953,
+      "confidence_score": 0.5694,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -908,9 +908,9 @@
     {
       "claim_id": "327",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.278,
+      "confidence_score": 0.2623,
       "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -918,7 +918,7 @@
     {
       "claim_id": "338",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3867,
+      "confidence_score": 0.434,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -927,8 +927,8 @@
     },
     {
       "claim_id": "343",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4041,
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.3692,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -937,10 +937,10 @@
     },
     {
       "claim_id": "380",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3187,
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.2248,
       "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -948,7 +948,7 @@
     {
       "claim_id": "385",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5086,
+      "confidence_score": 0.5559,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -958,7 +958,7 @@
     {
       "claim_id": "386",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5027,
+      "confidence_score": 0.4639,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -968,7 +968,7 @@
     {
       "claim_id": "399",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5107,
+      "confidence_score": 0.4245,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -978,7 +978,7 @@
     {
       "claim_id": "415",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4892,
+      "confidence_score": 0.4908,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -988,9 +988,9 @@
     {
       "claim_id": "431",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3188,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "confidence_score": 0.4315,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -998,7 +998,7 @@
     {
       "claim_id": "436",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4394,
+      "confidence_score": 0.5753,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1008,7 +1008,7 @@
     {
       "claim_id": "443",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3582,
+      "confidence_score": 0.5985,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1018,7 +1018,7 @@
     {
       "claim_id": "452",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4745,
+      "confidence_score": 0.5481,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -1028,7 +1028,7 @@
     {
       "claim_id": "475",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5712,
+      "confidence_score": 0.5891,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1038,17 +1038,17 @@
     {
       "claim_id": "501",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4521,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2223,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
     },
     {
       "claim_id": "513",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3027,
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.2858,
       "gate_decision": "abstain",
       "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
@@ -1058,9 +1058,9 @@
     {
       "claim_id": "516",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4274,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3322,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.4286,
       "has_conflict": false,
       "evidence_count": 5
@@ -1068,7 +1068,7 @@
     {
       "claim_id": "521",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3556,
+      "confidence_score": 0.4271,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -1078,7 +1078,7 @@
     {
       "claim_id": "525",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5025,
+      "confidence_score": 0.4408,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -1088,7 +1088,7 @@
     {
       "claim_id": "528",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4651,
+      "confidence_score": 0.4013,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1098,7 +1098,7 @@
     {
       "claim_id": "532",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4115,
+      "confidence_score": 0.3755,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1108,7 +1108,7 @@
     {
       "claim_id": "533",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2781,
+      "confidence_score": 0.2997,
       "gate_decision": "abstain",
       "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
@@ -1118,7 +1118,7 @@
     {
       "claim_id": "536",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4494,
+      "confidence_score": 0.397,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -1128,9 +1128,9 @@
     {
       "claim_id": "539",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3788,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3207,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -1148,7 +1148,7 @@
     {
       "claim_id": "549",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4715,
+      "confidence_score": 0.5032,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1158,7 +1158,7 @@
     {
       "claim_id": "569",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5523,
+      "confidence_score": 0.5888,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1168,9 +1168,9 @@
     {
       "claim_id": "578",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2635,
-      "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "confidence_score": 0.4857,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -1178,7 +1178,7 @@
     {
       "claim_id": "589",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3613,
+      "confidence_score": 0.5218,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1188,9 +1188,9 @@
     {
       "claim_id": "593",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3506,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2715,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.4286,
       "has_conflict": false,
       "evidence_count": 5
@@ -1198,7 +1198,7 @@
     {
       "claim_id": "597",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4707,
+      "confidence_score": 0.5373,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.5385,
@@ -1208,7 +1208,7 @@
     {
       "claim_id": "598",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5567,
+      "confidence_score": 0.4927,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.8182,
@@ -1218,9 +1218,9 @@
     {
       "claim_id": "613",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3456,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "confidence_score": 0.448,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -1228,9 +1228,9 @@
     {
       "claim_id": "619",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4503,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3288,
+      "gate_decision": "abstain",
+      "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.0,
       "has_conflict": false,
       "evidence_count": 5
@@ -1238,7 +1238,7 @@
     {
       "claim_id": "636",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5257,
+      "confidence_score": 0.4711,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -1248,9 +1248,9 @@
     {
       "claim_id": "641",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4673,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2914,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -1258,9 +1258,9 @@
     {
       "claim_id": "674",
       "aggregated_label": "CONTRADICT",
-      "confidence_score": 0.3336,
+      "confidence_score": 0.3098,
       "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -1268,9 +1268,9 @@
     {
       "claim_id": "692",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4751,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2573,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -1278,7 +1278,7 @@
     {
       "claim_id": "693",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4868,
+      "confidence_score": 0.4319,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1288,7 +1288,7 @@
     {
       "claim_id": "718",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4642,
+      "confidence_score": 0.4324,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1298,9 +1298,9 @@
     {
       "claim_id": "721",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3544,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.292,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -1308,9 +1308,9 @@
     {
       "claim_id": "723",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4868,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.331,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -1318,9 +1318,9 @@
     {
       "claim_id": "728",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5498,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3434,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -1328,7 +1328,7 @@
     {
       "claim_id": "729",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4106,
+      "confidence_score": 0.4878,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1338,105 +1338,15 @@
     {
       "claim_id": "742",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5078,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.292,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
     },
     {
       "claim_id": "743",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.209,
-      "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions; retrievers disagree on relevant documents",
-      "retriever_agreement": 0.1111,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "744",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4698,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
-      "retriever_agreement": 0.1765,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "756",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.583,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
-      "retriever_agreement": 0.3333,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "759",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5504,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
-      "retriever_agreement": 0.5385,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "770",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5125,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
-      "retriever_agreement": 0.1111,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "781",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3426,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
-      "retriever_agreement": 0.5385,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "784",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5486,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
-      "retriever_agreement": 0.1111,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "793",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2809,
-      "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions",
-      "retriever_agreement": 0.3333,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "805",
-      "aggregated_label": "CONTRADICT",
-      "confidence_score": 0.2287,
-      "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions",
-      "retriever_agreement": 0.25,
-      "has_conflict": false,
-      "evidence_count": 5
-    },
-    {
-      "claim_id": "808",
       "aggregated_label": "NOT_ENOUGH_INFO",
       "confidence_score": 0.3194,
       "gate_decision": "abstain",
@@ -1446,9 +1356,99 @@
       "evidence_count": 5
     },
     {
+      "claim_id": "744",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.5872,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.1765,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "756",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.4753,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.3333,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "759",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.5682,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.5385,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "770",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.5024,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.1111,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "781",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.3744,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.5385,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "784",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.4255,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.1111,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "793",
+      "aggregated_label": "CONTRADICT",
+      "confidence_score": 0.4599,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.3333,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "805",
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.3709,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.25,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
+      "claim_id": "808",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.4439,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
+      "retriever_agreement": 0.1111,
+      "has_conflict": false,
+      "evidence_count": 5
+    },
+    {
       "claim_id": "811",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2535,
+      "confidence_score": 0.2423,
       "gate_decision": "abstain",
       "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
@@ -1458,7 +1458,7 @@
     {
       "claim_id": "823",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5669,
+      "confidence_score": 0.4931,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -1468,7 +1468,7 @@
     {
       "claim_id": "832",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.368,
+      "confidence_score": 0.4728,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1478,7 +1478,7 @@
     {
       "claim_id": "837",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5471,
+      "confidence_score": 0.4529,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -1488,7 +1488,7 @@
     {
       "claim_id": "839",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.6007,
+      "confidence_score": 0.6355,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -1498,9 +1498,9 @@
     {
       "claim_id": "845",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4892,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2008,
+      "gate_decision": "abstain",
+      "gate_reason": "low NLI confidence; small margin between top predictions",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -1508,9 +1508,9 @@
     {
       "claim_id": "847",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5873,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3036,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -1518,9 +1518,9 @@
     {
       "claim_id": "852",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.472,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3205,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -1528,17 +1528,17 @@
     {
       "claim_id": "859",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2527,
+      "confidence_score": 0.2323,
       "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions",
+      "gate_reason": "low NLI confidence; small margin between top predictions",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
     },
     {
       "claim_id": "873",
-      "aggregated_label": "CONTRADICT",
-      "confidence_score": 0.3399,
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.2833,
       "gate_decision": "abstain",
       "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
@@ -1548,7 +1548,7 @@
     {
       "claim_id": "879",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4095,
+      "confidence_score": 0.5701,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1558,7 +1558,7 @@
     {
       "claim_id": "880",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5186,
+      "confidence_score": 0.5221,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1567,10 +1567,10 @@
     },
     {
       "claim_id": "882",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4425,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.3342,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -1578,7 +1578,7 @@
     {
       "claim_id": "903",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4333,
+      "confidence_score": 0.522,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1588,9 +1588,9 @@
     {
       "claim_id": "904",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3877,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3364,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -1598,9 +1598,9 @@
     {
       "claim_id": "911",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.1715,
+      "confidence_score": 0.2384,
       "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -1608,9 +1608,9 @@
     {
       "claim_id": "921",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4011,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2552,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -1618,7 +1618,7 @@
     {
       "claim_id": "922",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3665,
+      "confidence_score": 0.4511,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1628,7 +1628,7 @@
     {
       "claim_id": "936",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4192,
+      "confidence_score": 0.4775,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1638,7 +1638,7 @@
     {
       "claim_id": "957",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3783,
+      "confidence_score": 0.6183,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -1648,7 +1648,7 @@
     {
       "claim_id": "960",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5339,
+      "confidence_score": 0.4282,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1658,7 +1658,7 @@
     {
       "claim_id": "967",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3901,
+      "confidence_score": 0.4227,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1668,7 +1668,7 @@
     {
       "claim_id": "971",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5029,
+      "confidence_score": 0.3548,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.6667,
@@ -1678,7 +1678,7 @@
     {
       "claim_id": "982",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4991,
+      "confidence_score": 0.5984,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1688,9 +1688,9 @@
     {
       "claim_id": "985",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3206,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "confidence_score": 0.3584,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -1698,7 +1698,7 @@
     {
       "claim_id": "993",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.353,
+      "confidence_score": 0.6464,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.6667,
@@ -1708,7 +1708,7 @@
     {
       "claim_id": "1012",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5811,
+      "confidence_score": 0.5226,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -1718,7 +1718,7 @@
     {
       "claim_id": "1019",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4647,
+      "confidence_score": 0.474,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1728,7 +1728,7 @@
     {
       "claim_id": "1020",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4363,
+      "confidence_score": 0.5308,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1738,7 +1738,7 @@
     {
       "claim_id": "1021",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4386,
+      "confidence_score": 0.56,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -1748,9 +1748,9 @@
     {
       "claim_id": "1024",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5257,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2469,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -1758,7 +1758,7 @@
     {
       "claim_id": "1029",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3963,
+      "confidence_score": 0.5832,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1768,7 +1768,7 @@
     {
       "claim_id": "1041",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5249,
+      "confidence_score": 0.4672,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -1778,7 +1778,7 @@
     {
       "claim_id": "1049",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5512,
+      "confidence_score": 0.4185,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1788,7 +1788,7 @@
     {
       "claim_id": "1062",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5203,
+      "confidence_score": 0.4867,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1798,7 +1798,7 @@
     {
       "claim_id": "1086",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3058,
+      "confidence_score": 0.3222,
       "gate_decision": "abstain",
       "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.1765,
@@ -1808,9 +1808,9 @@
     {
       "claim_id": "1088",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.1939,
+      "confidence_score": 0.2787,
       "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions; retrievers disagree on relevant documents",
+      "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -1818,9 +1818,9 @@
     {
       "claim_id": "1089",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4361,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2857,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -1828,9 +1828,9 @@
     {
       "claim_id": "1104",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3013,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "confidence_score": 0.3799,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -1838,7 +1838,7 @@
     {
       "claim_id": "1107",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4893,
+      "confidence_score": 0.3753,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -1848,7 +1848,7 @@
     {
       "claim_id": "1110",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5289,
+      "confidence_score": 0.3922,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -1857,10 +1857,10 @@
     },
     {
       "claim_id": "1121",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5271,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.2296,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -1868,9 +1868,9 @@
     {
       "claim_id": "1130",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2317,
+      "confidence_score": 0.3349,
       "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions; retrievers disagree on relevant documents",
+      "gate_reason": "retrievers disagree on relevant documents",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -1878,7 +1878,7 @@
     {
       "claim_id": "1132",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.6188,
+      "confidence_score": 0.6321,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -1888,7 +1888,7 @@
     {
       "claim_id": "1137",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4173,
+      "confidence_score": 0.4601,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -1897,18 +1897,18 @@
     },
     {
       "claim_id": "1140",
-      "aggregated_label": "CONTRADICT",
-      "confidence_score": 0.2192,
-      "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.5334,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
     },
     {
       "claim_id": "1144",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4476,
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.3657,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -1918,19 +1918,19 @@
     {
       "claim_id": "1146",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.519,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2185,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
-      "evidence_count": 4
+      "evidence_count": 5
     },
     {
       "claim_id": "1150",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3261,
-      "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "confidence_score": 0.5354,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -1938,7 +1938,7 @@
     {
       "claim_id": "1163",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4091,
+      "confidence_score": 0.4154,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1948,9 +1948,9 @@
     {
       "claim_id": "1180",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3292,
-      "gate_decision": "abstain",
-      "gate_reason": "retrievers disagree on relevant documents",
+      "confidence_score": 0.427,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
       "has_conflict": false,
       "evidence_count": 5
@@ -1958,7 +1958,7 @@
     {
       "claim_id": "1185",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5469,
+      "confidence_score": 0.3534,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -1968,7 +1968,7 @@
     {
       "claim_id": "1187",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5232,
+      "confidence_score": 0.5504,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -1978,7 +1978,7 @@
     {
       "claim_id": "1202",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4804,
+      "confidence_score": 0.4036,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -1988,7 +1988,7 @@
     {
       "claim_id": "1216",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4726,
+      "confidence_score": 0.3692,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -1998,7 +1998,7 @@
     {
       "claim_id": "1221",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4531,
+      "confidence_score": 0.5618,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -2008,7 +2008,7 @@
     {
       "claim_id": "1225",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4121,
+      "confidence_score": 0.4958,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
@@ -2018,7 +2018,7 @@
     {
       "claim_id": "1232",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4341,
+      "confidence_score": 0.4703,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -2027,8 +2027,8 @@
     },
     {
       "claim_id": "1241",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4875,
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.3595,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -2038,19 +2038,19 @@
     {
       "claim_id": "1259",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4722,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2989,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
     },
     {
       "claim_id": "1262",
-      "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3869,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "aggregated_label": "SUPPORT",
+      "confidence_score": 0.2483,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -2058,7 +2058,7 @@
     {
       "claim_id": "1266",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4951,
+      "confidence_score": 0.3947,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -2068,9 +2068,9 @@
     {
       "claim_id": "1270",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3509,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.2804,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -2078,9 +2078,9 @@
     {
       "claim_id": "1271",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5541,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3226,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
@@ -2088,9 +2088,9 @@
     {
       "claim_id": "1273",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.397,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.304,
+      "gate_decision": "abstain",
+      "gate_reason": "small margin between top predictions",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -2098,7 +2098,7 @@
     {
       "claim_id": "1274",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5043,
+      "confidence_score": 0.654,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.5385,
@@ -2108,7 +2108,7 @@
     {
       "claim_id": "1290",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.465,
+      "confidence_score": 0.39,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -2118,9 +2118,9 @@
     {
       "claim_id": "1298",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.2971,
-      "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions",
+      "confidence_score": 0.4518,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
       "has_conflict": false,
       "evidence_count": 5
@@ -2128,7 +2128,7 @@
     {
       "claim_id": "1303",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.369,
+      "confidence_score": 0.4808,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1111,
@@ -2138,19 +2138,19 @@
     {
       "claim_id": "1319",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.524,
-      "gate_decision": "answer",
-      "gate_reason": "sufficient confidence",
+      "confidence_score": 0.3406,
+      "gate_decision": "abstain",
+      "gate_reason": "combined confidence below threshold",
       "retriever_agreement": 0.3333,
       "has_conflict": false,
       "evidence_count": 5
     },
     {
       "claim_id": "1320",
-      "aggregated_label": "CONTRADICT",
-      "confidence_score": 0.2907,
-      "gate_decision": "abstain",
-      "gate_reason": "small margin between top predictions",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.3673,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
       "has_conflict": false,
       "evidence_count": 5
@@ -2158,7 +2158,7 @@
     {
       "claim_id": "1335",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5243,
+      "confidence_score": 0.5986,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -2168,7 +2168,7 @@
     {
       "claim_id": "1336",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.5625,
+      "confidence_score": 0.5858,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -2178,7 +2178,7 @@
     {
       "claim_id": "1337",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.494,
+      "confidence_score": 0.4588,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -2187,10 +2187,10 @@
     },
     {
       "claim_id": "1339",
-      "aggregated_label": "CONTRADICT",
-      "confidence_score": 0.1755,
-      "gate_decision": "abstain",
-      "gate_reason": "low NLI confidence; small margin between top predictions; retrievers disagree on relevant documents",
+      "aggregated_label": "NOT_ENOUGH_INFO",
+      "confidence_score": 0.3552,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
       "has_conflict": false,
       "evidence_count": 5
@@ -2198,7 +2198,7 @@
     {
       "claim_id": "1352",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4385,
+      "confidence_score": 0.5917,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -2208,7 +2208,7 @@
     {
       "claim_id": "1359",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4509,
+      "confidence_score": 0.5597,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.4286,
@@ -2218,7 +2218,7 @@
     {
       "claim_id": "1368",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4074,
+      "confidence_score": 0.4472,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.25,
@@ -2228,7 +2228,7 @@
     {
       "claim_id": "1370",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.425,
+      "confidence_score": 0.4483,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
@@ -2238,7 +2238,7 @@
     {
       "claim_id": "1379",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3584,
+      "confidence_score": 0.4918,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.5385,
@@ -2248,7 +2248,7 @@
     {
       "claim_id": "1382",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.4627,
+      "confidence_score": 0.6194,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.3333,
@@ -2258,9 +2258,9 @@
     {
       "claim_id": "1385",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3264,
-      "gate_decision": "abstain",
-      "gate_reason": "combined confidence below threshold",
+      "confidence_score": 0.5181,
+      "gate_decision": "answer",
+      "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.1765,
       "has_conflict": false,
       "evidence_count": 5
@@ -2268,7 +2268,7 @@
     {
       "claim_id": "1389",
       "aggregated_label": "NOT_ENOUGH_INFO",
-      "confidence_score": 0.3658,
+      "confidence_score": 0.539,
       "gate_decision": "answer",
       "gate_reason": "sufficient confidence",
       "retriever_agreement": 0.0526,
