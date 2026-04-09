@@ -105,6 +105,10 @@ python scripts/05_abstention.py --mode bm25 --no-conflict-override
 # Claim decomposition analysis
 python scripts/06_claim_decomposition.py
 
+# Explanation generation
+python scripts/08_generation.py
+python scripts/08_generation.py --method template
+
 # Run tests
 pytest tests/ -v
 ```
@@ -118,11 +122,11 @@ src/claimverify/
     reasoning/      Rationale selection, NLI verdict prediction, multi-evidence aggregation
     calibration/    Uncertainty signals, abstention gate, threshold tuning
     preprocessing/  Claim decomposition for compound claims
-    evaluation/     Retrieval metrics (Recall, nDCG, MRR), verdict metrics (macro-F1), sentence selection metrics
-    generation/     Cited explanation generation (planned)
+    evaluation/     Retrieval metrics, verdict metrics, sentence selection, citation fidelity
+    generation/     Cited explanation generation (template + extractive)
 scripts/            Evaluation scripts
 configs/            Hydra configuration
-tests/              Unit tests (61 total)
+tests/              Unit tests (77 total)
 results/            Evaluation outputs (JSON)
 docs/               Architecture diagram
 ```
