@@ -1,0 +1,40 @@
+{
+  "top_k": 10,
+  "n_claims": 188,
+  "decomposition_stats": {
+    "compound": 1,
+    "atomic": 187,
+    "total_subclaims": 2
+  },
+  "baseline_metrics": {
+    "recall@5": 0.9046099290780142,
+    "recall@10": 0.9502659574468085,
+    "ndcg@5": 0.8332227326568513,
+    "ndcg@10": 0.8498053561568136,
+    "mrr": 0.8235435663627154
+  },
+  "decomposed_metrics": {
+    "recall@5": 0.8992907801418439,
+    "recall@10": 0.9502659574468085,
+    "ndcg@5": 0.8279035837206812,
+    "ndcg@10": 0.8463809263010053,
+    "mrr": 0.8191109422492402
+  },
+  "delta": {
+    "recall@5": -0.005319148936170248,
+    "recall@10": 0.0,
+    "ndcg@5": -0.005319148936170137,
+    "ndcg@10": -0.0034244298558083752,
+    "mrr": -0.004432624113475225
+  },
+  "examples": [
+    {
+      "claim_id": "1266",
+      "original": "The risk of breast cancer among parous women increases with placental weight of pregnancies, and this association is strongest for premenopausal breast cancer.",
+      "sub_claims": [
+        "The risk of breast cancer among parous women increases with placental weight of pregnancies",
+        "this association is strongest for premenopausal breast cancer."
+      ]
+    }
+  ]
+}
