@@ -64,6 +64,18 @@ Zero-shot NLI still struggles with scientific claims — the model defaults to "
 
 The abstention gate identifies uncertain claims (24% abstention rate) using NLI confidence, retriever disagreement, and evidence conflict signals. The AUC of the coverage-risk curve is 0.119 — improving the underlying NLI model would unlock stronger abstention gains.
 
+### Explanation Generation
+
+The system supports three explanation methods:
+
+| Method | Description | Model |
+|--------|-------------|-------|
+| **extractive** | Concatenates top evidence sentences with verdict framing | None |
+| **template** | Fills predefined templates with evidence citations | None |
+| **llm** | Generates fluent cited explanations via a causal LM | Gemma 4 E4B (default) |
+
+The LLM method uses [Gemma 4 E4B](https://huggingface.co/google/gemma-4-E4B) to produce natural-sounding 2-4 sentence explanations with `[N]` citation markers grounded in retrieved evidence. The model is loaded lazily and requires ~8 GB VRAM (GPU) or runs on CPU with float32.
+
 ## Setup
 
 ```bash
@@ -108,6 +120,8 @@ python scripts/06_claim_decomposition.py
 # Explanation generation
 python scripts/08_generation.py
 python scripts/08_generation.py --method template
+python scripts/08_generation.py --method llm
+python scripts/08_generation.py --method llm --llm-model google/gemma-4-E4B
 
 # Leaderboard predictions (AllenAI SciFact format)
 python scripts/09_leaderboard_predictions.py --split dev
@@ -127,7 +141,7 @@ src/claimverify/
     calibration/    Uncertainty signals, abstention gate, threshold tuning
     preprocessing/  Claim decomposition for compound claims
     evaluation/     Retrieval metrics, verdict metrics, citation fidelity, leaderboard formatter
-    generation/     Cited explanation generation (template + extractive)
+    generation/     Cited explanation generation (template, extractive, LLM)
 scripts/            Evaluation scripts
 configs/            Hydra configuration
 tests/              Unit tests (88 total)
