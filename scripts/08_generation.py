@@ -8,6 +8,8 @@ Run:
     python scripts/08_generation.py
     python scripts/08_generation.py --method template
     python scripts/08_generation.py --method extractive --top-k 5
+    python scripts/08_generation.py --method llm
+    python scripts/08_generation.py --method llm --llm-model google/gemma-4-E4B
 """
 
 import argparse
@@ -37,7 +39,10 @@ console = Console()
 
 def main():
     parser = argparse.ArgumentParser(description="Explanation generation evaluation")
-    parser.add_argument("--method", default="extractive", choices=["template", "extractive"])
+    parser.add_argument("--method", default="extractive",
+                        choices=["template", "extractive", "llm"])
+    parser.add_argument("--llm-model", default="google/gemma-4-E4B",
+                        help="LLM model for --method llm")
     parser.add_argument("--dense-model", default="sentence-transformers/all-MiniLM-L6-v2")
     parser.add_argument("--nli-model", default="MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli")
     parser.add_argument("--index-path", default=None)
@@ -77,7 +82,8 @@ def main():
     console.print(f"Loading NLI model ({args.nli_model})...")
     predictor = VerdictPredictor(model_name=args.nli_model)
 
-    generator = ExplanationGenerator(method=args.method)
+    llm_model = args.llm_model if args.method == "llm" else None
+    generator = ExplanationGenerator(method=args.method, llm_model=llm_model)
 
     # Run pipeline
     claims_with_evidence = [c for c in sf.dev_claims if c.evidence]
@@ -163,6 +169,7 @@ def main():
     # Save
     output = {
         "method": args.method,
+        "llm_model": args.llm_model if args.method == "llm" else None,
         "nli_model": args.nli_model,
         "top_k": args.top_k,
         "n_claims": len(claims_with_evidence),

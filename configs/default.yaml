@@ -43,7 +43,11 @@ reasoning:
     conflict_threshold: 0.3
 
 generation:
-  method: "extractive"  # "template" or "extractive"
+  method: "extractive"  # "template", "extractive", or "llm"
+  llm:
+    model: "google/gemma-4-E4B"
+    max_new_tokens: 256
+    temperature: 0.3
 
 calibration:
   threshold: 0.35
