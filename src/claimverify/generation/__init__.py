@@ -2,6 +2,7 @@
 
 from .citation import CitationContext, CitedEvidence, build_citation_context
 from .generator import Explanation, ExplanationGenerator
+from .llm_generator import LLMExplanationGenerator, LLMGeneratorConfig
 
 __all__ = [
     "CitationContext",
@@ -9,4 +10,6 @@ __all__ = [
     "build_citation_context",
     "Explanation",
     "ExplanationGenerator",
+    "LLMExplanationGenerator",
+    "LLMGeneratorConfig",
 ]

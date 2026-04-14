@@ -20,18 +20,30 @@ class Explanation:
 class ExplanationGenerator:
     """Generates cited explanations for claim verdicts.
 
-    Supports two modes:
+    Supports three modes:
     - "template": fast, deterministic, no model needed
     - "extractive": selects and combines the most relevant evidence
       sentences into a coherent explanation
+    - "llm": generates fluent explanations using a causal language model
     """
 
-    def __init__(self, method: str = "extractive"):
+    def __init__(self, method: str = "extractive", llm_model: str | None = None):
         self.method = method
+        self._llm_generator = None
+        self._llm_model = llm_model
+
+    def _get_llm_generator(self):
+        if self._llm_generator is None:
+            from .llm_generator import LLMExplanationGenerator, LLMGeneratorConfig
+            config = LLMGeneratorConfig(model_name=self._llm_model) if self._llm_model else None
+            self._llm_generator = LLMExplanationGenerator(config=config)
+        return self._llm_generator
 
     def generate(self, ctx: CitationContext) -> Explanation:
         if self.method == "template":
             return self._template(ctx)
+        if self.method == "llm":
+            return self._get_llm_generator().generate(ctx)
         return self._extractive(ctx)
 
     def _template(self, ctx: CitationContext) -> Explanation:
