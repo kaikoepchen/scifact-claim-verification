@@ -1,9 +1,14 @@
 """Tests for generation components."""
 
+from unittest.mock import MagicMock, patch
+
 from claimverify.generation.citation import (
     CitedEvidence, CitationContext, build_citation_context,
 )
 from claimverify.generation.generator import ExplanationGenerator, _extract_ref_ids
+from claimverify.generation.llm_generator import (
+    LLMExplanationGenerator, LLMGeneratorConfig, _extract_ref_ids as llm_extract_ref_ids,
+)
 from claimverify.generation.templates import generate_template_explanation
 from claimverify.evaluation.metrics import citation_quality
 
@@ -145,3 +150,49 @@ class TestCitationQuality:
     def test_empty_input(self):
         result = citation_quality([])
         assert result["citation_precision"] == 0.0
+
+
+class TestLLMGeneratorConfig:
+    def test_default_config(self):
+        config = LLMGeneratorConfig()
+        assert config.model_name == "google/gemma-4-E4B"
+        assert config.max_new_tokens == 256
+        assert config.temperature == 0.3
+
+    def test_custom_config(self):
+        config = LLMGeneratorConfig(model_name="google/gemma-3-4b-it", temperature=0.7)
+        assert config.model_name == "google/gemma-3-4b-it"
+        assert config.temperature == 0.7
+
+
+class TestLLMExplanationGenerator:
+    def test_nei_returns_without_model(self):
+        gen = LLMExplanationGenerator()
+        ctx = CitationContext(claim="test", verdict="NOT_ENOUGH_INFO", evidence=[])
+        expl = gen.generate(ctx)
+        assert expl.method == "llm"
+        assert expl.cited_refs == []
+        assert "not enough" in expl.text.lower()
+
+    def test_empty_evidence_returns_without_model(self):
+        gen = LLMExplanationGenerator()
+        ctx = CitationContext(claim="test", verdict="SUPPORT", evidence=[])
+        expl = gen.generate(ctx)
+        assert expl.cited_refs == []
+
+    def test_lazy_model_loading(self):
+        gen = LLMExplanationGenerator()
+        assert gen._model is None
+        assert gen._tokenizer is None
+
+    def test_filters_invalid_refs(self):
+        assert llm_extract_ref_ids("Text [1] and [5] here.") == [1, 5]
+
+
+class TestExplanationGeneratorLLMMethod:
+    def test_llm_method_nei(self):
+        gen = ExplanationGenerator(method="llm")
+        ctx = CitationContext(claim="test", verdict="NOT_ENOUGH_INFO", evidence=[])
+        expl = gen.generate(ctx)
+        assert expl.method == "llm"
+        assert expl.cited_refs == []
