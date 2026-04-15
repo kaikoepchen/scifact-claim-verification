@@ -37,7 +37,7 @@ reasoning:
     min_score: 0.25
 
   verdict:
-    model: "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"
+    model: "models/verdict-scifact"
 
   aggregation:
     conflict_threshold: 0.3

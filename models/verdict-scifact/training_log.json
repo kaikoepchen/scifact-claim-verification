@@ -1,0 +1,26 @@
+{
+  "base_model": "roberta-base",
+  "epochs": 5,
+  "lr": 2e-05,
+  "batch_size": 8,
+  "train_examples": 957,
+  "dev_examples": 338,
+  "best_epoch": 4,
+  "best_f1": 0.6357345433919456,
+  "final_metrics": {
+    "accuracy": 0.6627218934911243,
+    "macro_f1": 0.6357345433919456,
+    "per_class": {
+      "SUPPORT": {
+        "precision": 0.7383177570093458,
+        "recall": 0.7314814814814815,
+        "f1": 0.7348837209302326
+      },
+      "CONTRADICT": {
+        "precision": 0.532258064516129,
+        "recall": 0.5409836065573771,
+        "f1": 0.5365853658536586
+      }
+    }
+  }
+}
