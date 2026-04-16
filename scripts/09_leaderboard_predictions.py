@@ -4,10 +4,14 @@
 Runs the full pipeline and outputs predictions in the AllenAI
 SciFact evaluator format (JSONL). Can target dev or test split.
 
+Supports two modes:
+  --pipeline separate  (default legacy): cosine rationale selector + NLI verdict
+  --pipeline joint:     joint sentence-level model for both tasks
+
 Run:
     python scripts/09_leaderboard_predictions.py
-    python scripts/09_leaderboard_predictions.py --split test
-    python scripts/09_leaderboard_predictions.py --nli-model models/verdict-scifact
+    python scripts/09_leaderboard_predictions.py --pipeline joint --joint-model models/joint-scifact
+    python scripts/09_leaderboard_predictions.py --split test --pipeline joint
 """
 
 import argparse
@@ -27,6 +31,7 @@ from claimverify.retrieval.dense import DenseRetriever
 from claimverify.retrieval.fusion import ReciprocalRankFusion
 from claimverify.reasoning.rationale import RationaleSelector
 from claimverify.reasoning.verdict import VerdictPredictor
+from claimverify.reasoning.joint import JointSentenceModel
 from claimverify.evaluation.leaderboard import (
     format_prediction,
     write_predictions,
@@ -36,22 +41,73 @@ from claimverify.evaluation.leaderboard import (
 console = Console()
 
 
+def predict_separate(claim, retrieved_ids, sf, selector, predictor):
+    """Legacy pipeline: separate rationale selection + verdict prediction."""
+    doc_sentences = {}
+    for doc_id in retrieved_ids:
+        if doc_id in sf.abstracts:
+            doc_sentences[doc_id] = sf.abstracts[doc_id].sentences
+    rationales = selector.select_from_docs(claim.text, doc_sentences)
+
+    doc_verdicts = {}
+    for doc_id in retrieved_ids:
+        if doc_id not in sf.abstracts:
+            continue
+        verdict = predictor.predict(claim.text, sf.abstracts[doc_id].text)
+        doc_verdicts[doc_id] = verdict.label
+
+    doc_rationale_idxs = {}
+    for doc_id, scored_sents in rationales.items():
+        doc_rationale_idxs[doc_id] = [s.sentence_idx for s in scored_sents]
+
+    return doc_verdicts, doc_rationale_idxs
+
+
+def predict_joint(claim, retrieved_ids, sf, joint_model):
+    """Joint pipeline: single model does rationale selection + verdict."""
+    doc_sentences = {}
+    for doc_id in retrieved_ids:
+        if doc_id in sf.abstracts:
+            doc_sentences[doc_id] = sf.abstracts[doc_id].sentences
+
+    doc_results = joint_model.predict_documents(claim.text, doc_sentences)
+
+    doc_verdicts = {}
+    doc_rationale_idxs = {}
+    for doc_id, result in doc_results.items():
+        if result.label != "NEI" and result.rationale_indices:
+            doc_verdicts[doc_id] = result.label
+            doc_rationale_idxs[doc_id] = result.rationale_indices
+
+    return doc_verdicts, doc_rationale_idxs
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate leaderboard predictions")
     parser.add_argument("--split", default="dev", choices=["dev", "test"])
     parser.add_argument("--mode", default="hybrid", choices=["bm25", "dense", "hybrid"])
     parser.add_argument("--dense-model", default="sentence-transformers/all-MiniLM-L6-v2")
-    parser.add_argument("--nli-model", default="MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli")
     parser.add_argument("--index-path", default=None)
     parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument("--output", default=None)
+
+    # Pipeline selection
+    parser.add_argument("--pipeline", default="joint", choices=["separate", "joint"])
+
+    # Separate pipeline args
+    parser.add_argument("--nli-model", default="MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli")
+
+    # Joint pipeline args
+    parser.add_argument("--joint-model", default="models/joint-scifact")
+
     args = parser.parse_args()
 
     results_dir = Path("results")
     results_dir.mkdir(exist_ok=True)
     output_path = args.output or str(results_dir / f"predictions_{args.split}.jsonl")
 
-    console.print(f"\n[bold blue]Generating Leaderboard Predictions ({args.split})[/bold blue]\n")
+    console.print(f"\n[bold blue]Generating Leaderboard Predictions ({args.split})[/bold blue]")
+    console.print(f"  Pipeline: {args.pipeline}\n")
 
     # Load data
     console.print("Loading SciFact...")
@@ -80,11 +136,19 @@ def main():
 
     rrf = ReciprocalRankFusion(k=60)
 
-    console.print("Loading rationale selector...")
-    selector = RationaleSelector(max_sentences_per_doc=3)
+    # Load reasoning models
+    selector = None
+    predictor = None
+    joint_model = None
 
-    console.print(f"Loading NLI model ({args.nli_model})...")
-    predictor = VerdictPredictor(model_name=args.nli_model)
+    if args.pipeline == "separate":
+        console.print("Loading rationale selector...")
+        selector = RationaleSelector(max_sentences_per_doc=3)
+        console.print(f"Loading NLI model ({args.nli_model})...")
+        predictor = VerdictPredictor(model_name=args.nli_model)
+    else:
+        console.print(f"Loading joint model ({args.joint_model})...")
+        joint_model = JointSentenceModel(model_name=args.joint_model)
 
     # Generate predictions
     console.print(f"\nRunning pipeline on {len(claims)} claims...\n")
@@ -103,25 +167,15 @@ def main():
 
         retrieved_ids = [doc_id for doc_id, _ in retrieved]
 
-        # Select rationale sentences
-        doc_sentences = {}
-        for doc_id in retrieved_ids:
-            if doc_id in sf.abstracts:
-                doc_sentences[doc_id] = sf.abstracts[doc_id].sentences
-        rationales = selector.select_from_docs(claim.text, doc_sentences)
-
-        # Predict verdict per doc using full abstract
-        doc_verdicts = {}
-        for doc_id in retrieved_ids:
-            if doc_id not in sf.abstracts:
-                continue
-            verdict = predictor.predict(claim.text, sf.abstracts[doc_id].text)
-            doc_verdicts[doc_id] = verdict.label
-
-        # Build rationale index map
-        doc_rationale_idxs = {}
-        for doc_id, scored_sents in rationales.items():
-            doc_rationale_idxs[doc_id] = [s.sentence_idx for s in scored_sents]
+        # Run selected pipeline
+        if args.pipeline == "separate":
+            doc_verdicts, doc_rationale_idxs = predict_separate(
+                claim, retrieved_ids, sf, selector, predictor,
+            )
+        else:
+            doc_verdicts, doc_rationale_idxs = predict_joint(
+                claim, retrieved_ids, sf, joint_model,
+            )
 
         pred = format_prediction(claim.claim_id, doc_verdicts, doc_rationale_idxs)
         predictions.append(pred)
@@ -179,10 +233,10 @@ def main():
         eval_table.add_row("Total gold", f"{metrics['total_gold']}")
         console.print(eval_table)
 
-        # Save metrics alongside predictions
+        # Save metrics
         metrics_path = results_dir / "09_leaderboard_metrics.json"
         with open(metrics_path, "w") as f:
-            json.dump(metrics, f, indent=2)
+            json.dump({**metrics, "pipeline": args.pipeline}, f, indent=2)
         console.print(f"Metrics saved to {metrics_path}")
 
 
