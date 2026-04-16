@@ -1,8 +1,9 @@
 {
-  "abstract_precision": 0.13942307692307693,
-  "abstract_recall": 0.13875598086124402,
-  "abstract_f1": 0.1390887290167866,
-  "true_positives": 29,
-  "total_predicted": 208,
-  "total_gold": 209
+  "abstract_precision": 0.3113456464379947,
+  "abstract_recall": 0.5645933014354066,
+  "abstract_f1": 0.401360544217687,
+  "true_positives": 118,
+  "total_predicted": 379,
+  "total_gold": 209,
+  "pipeline": "joint"
 }
