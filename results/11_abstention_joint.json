@@ -1,0 +1,271 @@
+{
+  "baseline_accuracy": 0.75,
+  "n_claims_with_evidence": 188,
+  "n_correct_all": 141,
+  "best_with_disagreement": {
+    "accuracy": 0.8125,
+    "threshold": 0.3843,
+    "coverage": 0.5957
+  },
+  "best_without_disagreement": {
+    "accuracy": 0.8079,
+    "threshold": 0.4057,
+    "coverage": 0.8032
+  },
+  "disagreement_contribution": 0.0046,
+  "correlation_agreement_correct": 0.0432,
+  "accuracy_high_agreement": 0.8061,
+  "accuracy_low_agreement": 0.6889,
+  "agreement_gap": 0.1172,
+  "leaderboard_f1_no_abstention": {
+    "abstract_precision": 0.3113456464379947,
+    "abstract_recall": 0.5645933014354066,
+    "abstract_f1": 0.401360544217687,
+    "true_positives": 118,
+    "total_predicted": 379,
+    "total_gold": 209
+  },
+  "leaderboard_f1_with_abstention": {
+    "abstract_precision": 0.3220338983050847,
+    "abstract_recall": 0.45454545454545453,
+    "abstract_f1": 0.3769841269841269,
+    "true_positives": 95,
+    "total_predicted": 295,
+    "total_gold": 209
+  },
+  "abstention_threshold": 0.3367,
+  "coverage_accuracy_curve": [
+    {
+      "threshold": 0.0,
+      "n_answered": 188,
+      "n_correct": 141,
+      "accuracy": 0.75,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.0241,
+      "n_answered": 188,
+      "n_correct": 141,
+      "accuracy": 0.75,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.0481,
+      "n_answered": 188,
+      "n_correct": 141,
+      "accuracy": 0.75,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.0722,
+      "n_answered": 188,
+      "n_correct": 141,
+      "accuracy": 0.75,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.0962,
+      "n_answered": 188,
+      "n_correct": 141,
+      "accuracy": 0.75,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.1203,
+      "n_answered": 188,
+      "n_correct": 141,
+      "accuracy": 0.75,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.1443,
+      "n_answered": 188,
+      "n_correct": 141,
+      "accuracy": 0.75,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.1684,
+      "n_answered": 185,
+      "n_correct": 138,
+      "accuracy": 0.7459,
+      "coverage": 0.984,
+      "accuracy_gain": -0.0041
+    },
+    {
+      "threshold": 0.1924,
+      "n_answered": 183,
+      "n_correct": 137,
+      "accuracy": 0.7486,
+      "coverage": 0.9734,
+      "accuracy_gain": -0.0014
+    },
+    {
+      "threshold": 0.2165,
+      "n_answered": 180,
+      "n_correct": 136,
+      "accuracy": 0.7556,
+      "coverage": 0.9574,
+      "accuracy_gain": 0.0056
+    },
+    {
+      "threshold": 0.2405,
+      "n_answered": 174,
+      "n_correct": 131,
+      "accuracy": 0.7529,
+      "coverage": 0.9255,
+      "accuracy_gain": 0.0029
+    },
+    {
+      "threshold": 0.2646,
+      "n_answered": 170,
+      "n_correct": 128,
+      "accuracy": 0.7529,
+      "coverage": 0.9043,
+      "accuracy_gain": 0.0029
+    },
+    {
+      "threshold": 0.2886,
+      "n_answered": 158,
+      "n_correct": 123,
+      "accuracy": 0.7785,
+      "coverage": 0.8404,
+      "accuracy_gain": 0.0285
+    },
+    {
+      "threshold": 0.3127,
+      "n_answered": 140,
+      "n_correct": 113,
+      "accuracy": 0.8071,
+      "coverage": 0.7447,
+      "accuracy_gain": 0.0571
+    },
+    {
+      "threshold": 0.3367,
+      "n_answered": 137,
+      "n_correct": 111,
+      "accuracy": 0.8102,
+      "coverage": 0.7287,
+      "accuracy_gain": 0.0602
+    },
+    {
+      "threshold": 0.3608,
+      "n_answered": 129,
+      "n_correct": 103,
+      "accuracy": 0.7984,
+      "coverage": 0.6862,
+      "accuracy_gain": 0.0484
+    },
+    {
+      "threshold": 0.3848,
+      "n_answered": 106,
+      "n_correct": 85,
+      "accuracy": 0.8019,
+      "coverage": 0.5638,
+      "accuracy_gain": 0.0519
+    },
+    {
+      "threshold": 0.4089,
+      "n_answered": 72,
+      "n_correct": 55,
+      "accuracy": 0.7639,
+      "coverage": 0.383,
+      "accuracy_gain": 0.0139
+    },
+    {
+      "threshold": 0.4329,
+      "n_answered": 58,
+      "n_correct": 44,
+      "accuracy": 0.7586,
+      "coverage": 0.3085,
+      "accuracy_gain": 0.0086
+    },
+    {
+      "threshold": 0.457,
+      "n_answered": 50,
+      "n_correct": 41,
+      "accuracy": 0.82,
+      "coverage": 0.266,
+      "accuracy_gain": 0.07
+    },
+    {
+      "threshold": 0.481,
+      "n_answered": 35,
+      "n_correct": 27,
+      "accuracy": 0.7714,
+      "coverage": 0.1862,
+      "accuracy_gain": 0.0214
+    },
+    {
+      "threshold": 0.5051,
+      "n_answered": 24,
+      "n_correct": 18,
+      "accuracy": 0.75,
+      "coverage": 0.1277,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.5291,
+      "n_answered": 16,
+      "n_correct": 13,
+      "accuracy": 0.8125,
+      "coverage": 0.0851,
+      "accuracy_gain": 0.0625
+    },
+    {
+      "threshold": 0.5532,
+      "n_answered": 13,
+      "n_correct": 10,
+      "accuracy": 0.7692,
+      "coverage": 0.0691,
+      "accuracy_gain": 0.0192
+    },
+    {
+      "threshold": 0.5772,
+      "n_answered": 8,
+      "n_correct": 7,
+      "accuracy": 0.875,
+      "coverage": 0.0426,
+      "accuracy_gain": 0.125
+    },
+    {
+      "threshold": 0.6013,
+      "n_answered": 5,
+      "n_correct": 4,
+      "accuracy": 0.8,
+      "coverage": 0.0266,
+      "accuracy_gain": 0.05
+    },
+    {
+      "threshold": 0.6253,
+      "n_answered": 2,
+      "n_correct": 2,
+      "accuracy": 1.0,
+      "coverage": 0.0106,
+      "accuracy_gain": 0.25
+    },
+    {
+      "threshold": 0.6494,
+      "n_answered": 1,
+      "n_correct": 1,
+      "accuracy": 1.0,
+      "coverage": 0.0053,
+      "accuracy_gain": 0.25
+    },
+    {
+      "threshold": 0.6734,
+      "n_answered": 1,
+      "n_correct": 1,
+      "accuracy": 1.0,
+      "coverage": 0.0053,
+      "accuracy_gain": 0.25
+    }
+  ]
+}
