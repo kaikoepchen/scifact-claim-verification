@@ -35,7 +35,42 @@ Built for the RAG course at the University of Zurich, FS 2026.
 
 When retrievers agree, retrieval almost always succeeds (99%). When they disagree, success drops and 11% of cases have only one retriever finding the relevant document.
 
-### Verdict Prediction (SciFact Dev, per-document NLI)
+### Joint Sentence-Level Model (SciFact Dev)
+
+We replace the separate cosine-similarity rationale selector and abstract-level NLI predictor with a single DeBERTa-v3-large model fine-tuned on SciFact sentence-level annotations. Each (claim, sentence) pair is classified as SUPPORT / CONTRADICT / NEI, jointly performing rationale selection and verdict prediction.
+
+**Sentence-level metrics (dev set):**
+
+| Metric | Value |
+|--------|-------|
+| Accuracy | 0.862 |
+| Macro-F1 | 0.787 |
+| SUPPORT P / R / F1 | 0.748 / 0.770 / 0.759 |
+| CONTRADICT P / R / F1 | 0.676 / 0.702 / 0.689 |
+| NEI P / R / F1 | 0.920 / 0.908 / 0.914 |
+
+**End-to-end leaderboard evaluation (abstract-level, dev set):**
+
+| Pipeline | Precision | Recall | F1 |
+|----------|-----------|--------|----|
+| Separate (cosine + zero-shot NLI) | 0.139 | 0.139 | 0.139 |
+| **Joint sentence model** | **0.311** | **0.565** | **0.401** |
+
+The joint model improved abstract-level F1 by nearly 3x (0.139 → 0.401).
+
+### Comparison to Published Systems
+
+| System | Abstract F1 | Notes |
+|--------|-------------|-------|
+| VeriSci (Wadden 2020) | 50.0 | Original baseline |
+| **Ours (joint, dev)** | **40.1** | Hybrid retrieval + joint sentence model |
+| ParagraphJoint (Li 2021) | 69.1 | End-to-end paragraph model |
+| ARSJoint (Zhang 2021) | 62.4–71.2 | Joint model with rationale regularization |
+| MultiVerS (Wadden 2022) | 72.5 | SOTA — Longformer + weak supervision |
+
+Note: published results are on the test set; ours are on dev. Our system uses a modular pipeline (separate retrieval stage), while top systems use architectures specifically designed for joint verification.
+
+### Verdict Prediction — Zero-Shot Baseline (SciFact Dev)
 
 Pipeline: hybrid retrieval (top-5) -> full abstract -> DeBERTa-v3-large-mnli-fever-anli-ling-wanli (zero-shot).
 
@@ -46,7 +81,7 @@ Pipeline: hybrid retrieval (top-5) -> full abstract -> DeBERTa-v3-large-mnli-fev
 | SUPPORT P / R / F1 | 0.663 / 0.292 / 0.405 |
 | CONTRADICT P / R / F1 | 0.862 / 0.205 / 0.331 |
 
-Zero-shot NLI still struggles with scientific claims — the model defaults to "neutral" for domain-specific evidence. Retrieval recall is strong (87.1% of gold docs found), but the NLI model is the bottleneck. Fine-tuning on SciFact training data would significantly improve verdict accuracy.
+Zero-shot NLI struggles with scientific claims — the model defaults to "neutral" for domain-specific evidence. The joint sentence-level model (above) addresses this bottleneck.
 
 ### Abstention (SciFact Dev)
 
@@ -62,7 +97,7 @@ Zero-shot NLI still struggles with scientific claims — the model defaults to "
 | Abstained | 45 |
 | Flagged (conflict) | 0 |
 
-The abstention gate identifies uncertain claims (24% abstention rate) using NLI confidence, retriever disagreement, and evidence conflict signals. The AUC of the coverage-risk curve is 0.119 — improving the underlying NLI model would unlock stronger abstention gains.
+The abstention gate identifies uncertain claims (24% abstention rate) using NLI confidence, retriever disagreement, and evidence conflict signals.
 
 ### Explanation Generation
 
@@ -123,9 +158,14 @@ python scripts/08_generation.py --method template
 python scripts/08_generation.py --method llm
 python scripts/08_generation.py --method llm --llm-model google/gemma-4-E4B
 
+# Fine-tune joint sentence-level model
+python scripts/07_finetune_joint.py
+python scripts/07_finetune_joint.py --epochs 10 --lr 1e-5 --batch-size 4 --grad-accum 8
+
 # Leaderboard predictions (AllenAI SciFact format)
-python scripts/09_leaderboard_predictions.py --split dev
-python scripts/09_leaderboard_predictions.py --split test --nli-model models/verdict-scifact
+python scripts/09_leaderboard_predictions.py --pipeline joint --split dev
+python scripts/09_leaderboard_predictions.py --pipeline separate --split dev
+python scripts/09_leaderboard_predictions.py --pipeline joint --split test
 
 # Run tests
 pytest tests/ -v
@@ -137,7 +177,7 @@ pytest tests/ -v
 src/claimverify/
     data/           SciFact corpus loader
     retrieval/      BM25, dense (FAISS), RRF fusion, reranker, disagreement analysis
-    reasoning/      Rationale selection, NLI verdict prediction, multi-evidence aggregation
+    reasoning/      Rationale selection, NLI verdict prediction, joint sentence model, aggregation
     calibration/    Uncertainty signals, abstention gate, threshold tuning
     preprocessing/  Claim decomposition for compound claims
     evaluation/     Retrieval metrics, verdict metrics, citation fidelity, leaderboard formatter
