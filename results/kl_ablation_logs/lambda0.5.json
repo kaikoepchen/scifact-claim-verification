@@ -1,0 +1,50 @@
+{
+  "base_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+  "lambda_kl": 0.5,
+  "kl_top_k": 3,
+  "kl_every_n": 8,
+  "epochs_run": 10,
+  "lr": 1e-05,
+  "batch_size": 4,
+  "grad_accum": 8,
+  "max_length": 256,
+  "neg_ratio": 3.0,
+  "train_examples": 3561,
+  "dev_examples": 1288,
+  "kl_eligible_claims": 809,
+  "best_epoch": 10,
+  "best_macro_f1": 0.7964900086563125,
+  "epoch_avg_kl_losses": [
+    0.03979590565578693,
+    0.03133818565926573,
+    0.042723978789909196,
+    0.03483538578845443,
+    0.02138354661554593,
+    0.007758015985018574,
+    0.017541860444022884,
+    0.015850365366540255,
+    0.0031036822659410283,
+    0.013087485668808956
+  ],
+  "final_metrics": {
+    "accuracy": 0.8649068322981367,
+    "macro_f1": 0.7964900086563125,
+    "per_class": {
+      "SUPPORT": {
+        "precision": 0.75,
+        "recall": 0.7787234042553192,
+        "f1": 0.7640918580375782
+      },
+      "CONTRADICT": {
+        "precision": 0.706766917293233,
+        "recall": 0.7175572519083969,
+        "f1": 0.712121212121212
+      },
+      "NEI": {
+        "precision": 0.9187705817782656,
+        "recall": 0.9078091106290672,
+        "f1": 0.9132569558101472
+      }
+    }
+  }
+}
