@@ -242,6 +242,8 @@ def main():
     parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--output-dir", default="models/joint-kl-scifact")
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--dense-model", default="sentence-transformers/all-MiniLM-L6-v2",
+                        help="Sentence-transformer / HF model for the dense retrieval view used in KL")
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -265,8 +267,8 @@ def main():
     bm25 = BM25Retriever(k1=1.2, b=0.75)
     bm25.build_index(corpus)
 
-    console.print("Building dense index...")
-    dense_retriever = DenseRetriever(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    console.print(f"Building dense index [{args.dense_model}]...")
+    dense_retriever = DenseRetriever(model_name=args.dense_model)
     dense_retriever.build_index(corpus)
 
     console.print("Pre-computing retrieval for training claims...")
@@ -479,6 +481,7 @@ def main():
     # ── Save log ─────────────────────────────────────────────────────
     log = {
         "base_model": args.base_model,
+        "dense_model": args.dense_model,
         "lambda_kl": args.lambda_kl,
         "kl_top_k": args.kl_top_k,
         "kl_every_n": args.kl_every_n,
