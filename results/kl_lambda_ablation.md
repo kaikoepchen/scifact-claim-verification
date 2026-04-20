@@ -13,6 +13,15 @@ Training config held constant across runs: `MoritzLaurer/DeBERTa-v3-large-mnli-f
 
 Baseline reference (no-KL codepath, `joint-scifact`): Macro-F1 0.7873. λ=0.0 under the KL script matches it to within 0.002 — sanity check passes.
 
+### Dense-encoder swap (λ=0.1, seed 42)
+
+| Dense view | Macro-F1 | SUPPORT F1 | CONTRADICT F1 | NEI F1 | Peak KL |
+|---|---|---|---|---|---|
+| MiniLM-L6-v2 | **0.7979** | 0.752 | **0.729** | 0.913 | 0.048 |
+| SPECTER-2 (base) | 0.7885 | 0.758 | 0.693 | 0.914 | 0.113 |
+
+SPECTER-2 produces ~2.5× larger BM25 disagreement but no downstream gain — CONTRADICT F1 regresses to no-KL levels. Citation-topic similarity is the "wrong kind of different" for claim verification, which needs passage-level lexical specificity. See `docs/dense_models.md` for the full reasoning.
+
 ## Observations
 
 - **λ=0.1 is the peak** at 0.7979, with the biggest individual-class move: CONTRADICT F1 0.696 → 0.729 (+3.3). SUPPORT/NEI essentially unchanged.
