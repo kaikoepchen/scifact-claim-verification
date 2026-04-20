@@ -90,3 +90,13 @@ Skip this unless we also evaluate on **HealthVer** (FINDINGS.md Priority 5), whe
 | S-PubMedBERT | Medium on biomed | Low unless evaluating on HealthVer | Low | Skip for SciFact; revisit for HealthVer |
 
 The biggest research payoff is **SPECTER-2 as a third, citation-semantic retriever**, because it adds a qualitatively different notion of relevance and unlocks three-way KL — which nobody in the related work does. BGE-M3 is cheap and should just happen. S-PubMedBERT only makes sense once we're evaluating outside SciFact.
+
+---
+
+## Empirical update (2026-04-20): SPECTER-2 as a drop-in replacement for MiniLM
+
+Ran λ=0.1 with SPECTER-2 as the dense view (seed 42, identical config otherwise). Result: macro-F1 0.788 vs MiniLM's 0.798 at the same λ. CONTRADICT F1 **regressed** from 0.729 (MiniLM) to 0.693 (SPECTER-2) — back to no-KL-baseline levels.
+
+KL-loss trajectory tells the story: SPECTER-2 produces ~2.5× stronger disagreement with BM25 at its peak (KL peaks at 0.113 vs MiniLM's stable ~0.04), confirming the "genuinely different view" hypothesis. But the disagreement is **the wrong kind of different** for claim verification — SPECTER-2 optimizes for citation-topic similarity, so it retrieves papers *about the topic* rather than passages with *specific counter-evidence*. For CONTRADICT, which needs lexical specificity ("X does NOT cause Y"), SPECTER-2's view systematically misleads the KL term.
+
+**Implication**: pair-wise KL with a single dense retriever may not be improvable by picking a "better" dense encoder — the right move is three-way KL (BM25 + MiniLM + SPECTER-2) where each retriever contributes its own kind of relevance. SPECTER-2 alone degrades the signal; SPECTER-2 alongside MiniLM may enrich it.
