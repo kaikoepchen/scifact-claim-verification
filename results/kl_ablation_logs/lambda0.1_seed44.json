@@ -1,0 +1,48 @@
+{
+  "base_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+  "dense_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "lambda_kl": 0.1,
+  "kl_top_k": 3,
+  "kl_every_n": 8,
+  "epochs_run": 7,
+  "lr": 1e-05,
+  "batch_size": 4,
+  "grad_accum": 8,
+  "max_length": 256,
+  "neg_ratio": 3.0,
+  "train_examples": 3561,
+  "dev_examples": 1288,
+  "kl_eligible_claims": 809,
+  "best_epoch": 4,
+  "best_macro_f1": 0.7840710415332053,
+  "epoch_avg_kl_losses": [
+    0.0254720880310177,
+    0.09417489911261778,
+    0.04534542092503896,
+    0.04414565984824639,
+    0.05394345434038556,
+    0.02834143358763089,
+    0.03228906873105602
+  ],
+  "final_metrics": {
+    "accuracy": 0.8454968944099379,
+    "macro_f1": 0.7840710415332053,
+    "per_class": {
+      "SUPPORT": {
+        "precision": 0.6859205776173285,
+        "recall": 0.8085106382978723,
+        "f1": 0.7421874999999999
+      },
+      "CONTRADICT": {
+        "precision": 0.6711409395973155,
+        "recall": 0.7633587786259542,
+        "f1": 0.7142857142857144
+      },
+      "NEI": {
+        "precision": 0.9269141531322506,
+        "recall": 0.8665943600867679,
+        "f1": 0.8957399103139013
+      }
+    }
+  }
+}
