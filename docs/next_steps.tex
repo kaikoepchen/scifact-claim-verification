@@ -371,6 +371,98 @@ Step 4 is the refactor that makes it production-shaped on Nuvolos;
 Step 5 turns it from a ``claim-input form'' into an actual chat
 experience.
 
+\section{MultiVerS Integration}
+
+Alongside the chatbot work, the MultiVerS ablations
+(Wadden 2022) suggest a concrete upgrade path for the verdict module.
+Their Table~3c ablation on modelling approach shows that predicting
+labels from selected rationales alone collapses ($-66\%$ F1 on
+context-dependent instances) compared to a multitask model that sees
+the full abstract ($-14\%$). Our current sentence-level joint model is
+structurally close to their worst variant on this axis, which plausibly
+explains a large share of the $40.1 \to 72.5$ F1 gap.
+
+MultiVerS is MIT-licensed and publishes the exact \texttt{scifact}
+checkpoint behind their 72.5 number
+(\url{https://github.com/dwadden/multivers}).
+
+\subsection{Three Integration Levels}
+
+\begin{description}
+  \item[Level 1 -- Baseline run (hours).]
+    Pull their \texttt{scifact} checkpoint via
+    \texttt{script/get\_checkpoint.py}, run \texttt{predict.py} on
+    SciFact dev in an isolated environment, compare head-to-head with
+    our 40.1. No changes to our code. Converts the cross-paper comparison
+    in our results table into a clean dev-set number.
+  \item[Level 2 -- Drop-in verdict module (days).]
+    Replace \texttt{reasoning/joint.py} with a wrapper that calls the
+    MultiVerS model on full abstracts, keep our hybrid retrieval and
+    disagreement-based abstention on top. Gives us the
+    full-document-context architecture their ablations endorse, while
+    preserving our research angle (retriever disagreement as an
+    uncertainty signal).
+  \item[Level 3 -- Reproduce pretraining (weeks).]
+    Not worth it. They release \texttt{fever\_sci} and \texttt{scifact}
+    checkpoints, which already bake in the weak-supervision step their
+    Table~3a measures.
+\end{description}
+
+\subsection{Dependency Skew}
+
+Level~2 is gated by a version gap between the two codebases:
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & \textbf{MultiVerS (pinned)} & \textbf{This project} \\
+\midrule
+torch             & 1.7.1  & $\geq$ 2.1 \\
+transformers      & 4.2.2  & $\geq$ 4.40 \\
+pytorch-lightning & 1.2.1  & not used \\
+Python            & 3.7-era & 3.10+ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Three ways to handle the gap, in increasing order of effort:
+
+\begin{enumerate}
+  \item \textbf{Separate venv + subprocess.} Run their \texttt{predict.py}
+        unmodified, hand claims in and predictions out via temp files.
+        Fastest path; ugly but acceptable for a baseline number.
+  \item \textbf{MultiVerS as its own Nuvolos service.}
+        Deploy their code on the \textit{Trainer} app (which already
+        has GPU for Gemma~4) as a small FastAPI wrapper. Our Backend
+        calls it over the instance network. Clean isolation, fits the
+        chatbot architecture in Fig.~\ref{fig:infra}. Estimated 1--2 days.
+  \item \textbf{Port the model forward.} Reimplement the Longformer
+        encoder with a label head and token-level rationale head
+        against modern Hugging Face (\texttt{LongformerModel} + two
+        heads, two-term loss). Load their released weights with a key
+        rename. 3--5 days; cleanest long-term but not required for the
+        course deadline.
+\end{enumerate}
+
+\subsection{Recommendation}
+
+\begin{enumerate}
+  \item \textbf{Do Level~1 this week.} It is a free datapoint for the
+        course report and turns an apples-to-oranges comparison
+        (\textit{our dev} vs \textit{their test}) into a clean dev-set
+        head-to-head.
+  \item \textbf{If the numbers justify it, do Level~2 via option~(b).}
+        The MultiVerS service slots naturally onto the Trainer app next
+        to Gemma~4, and the Backend's \texttt{/verify} endpoint becomes
+        a thin orchestrator: retrieval $\to$ MultiVerS $\to$ abstention
+        $\to$ generation.
+\end{enumerate}
+
+This plan also updates the chatbot build order: Level~1 can run in
+parallel with Step~1 of the chatbot work, and Level~2 (option b) becomes
+a fourth service alongside Frontend, Backend, and Database in
+Fig.~\ref{fig:infra}.
+
 \section{Open Questions}
 
 \begin{itemize}
@@ -384,6 +476,12 @@ experience.
   \item \textbf{Chat memory.} How far back should follow-up rewriting
         look? A sliding window of the last 4 turns is probably enough
         and avoids unbounded prompt growth.
+  \item \textbf{MultiVerS licensing vs pretraining data.} The code and
+        \texttt{scifact} checkpoint are MIT, but FEVER-SCI weak
+        supervision draws on PubMedQA and EvidenceInference. Redistribution
+        of our combined artefact would need to respect those upstream
+        licences. Using their released checkpoint at inference time is
+        unaffected.
 \end{itemize}
 
 \end{document}
