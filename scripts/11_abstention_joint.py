@@ -123,10 +123,7 @@ def main():
             claim_id=claim.claim_id,
             nli_logits={"SUPPORT": support_score, "CONTRADICT": contradict_score,
                         "NOT_ENOUGH_INFO": nei_score},
-            retrieval_score=top_score,
             retriever_agreement=agreement,
-            evidence_count=len(doc_verdicts),
-            has_conflict=False,
         )
 
         # Check correctness against gold (per-document)
@@ -225,10 +222,7 @@ def main():
             claim_id=s.claim_id,
             nli_confidence=s.nli_confidence,
             nli_margin=s.nli_margin,
-            retrieval_score=s.retrieval_score,
             retriever_agreement=1.0,  # Pretend retrievers always agree
-            evidence_count=s.evidence_count,
-            has_conflict=s.has_conflict,
         )
         scores_no_disagree.append(fake_signals.combined_score)
 

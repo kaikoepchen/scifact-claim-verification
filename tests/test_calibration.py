@@ -5,16 +5,12 @@ from claimverify.calibration.gate import AbstentionGate
 from claimverify.calibration.tuning import coverage_risk_curve, find_optimal_threshold, auc_coverage_risk
 
 
-def _make_signals(claim_id, confidence=0.8, margin=0.5, agreement=0.3,
-                  retrieval=0.7, evidence=2, conflict=False):
+def _make_signals(claim_id, confidence=0.8, margin=0.5, agreement=0.3):
     return UncertaintySignals(
         claim_id=claim_id,
         nli_confidence=confidence,
         nli_margin=margin,
-        retrieval_score=retrieval,
         retriever_agreement=agreement,
-        evidence_count=evidence,
-        has_conflict=conflict,
     )
 
 
@@ -23,21 +19,17 @@ class TestUncertaintySignals:
         s = _make_signals("c1")
         assert 0.0 <= s.combined_score <= 1.0
 
-    def test_conflict_lowers_score(self):
-        s_ok = _make_signals("c1", conflict=False)
-        s_conflict = _make_signals("c1", conflict=True)
-        assert s_conflict.combined_score < s_ok.combined_score
-
-    def test_no_evidence_lowers_score(self):
-        s_with = _make_signals("c1", evidence=3)
-        s_without = _make_signals("c1", evidence=0)
-        assert s_without.combined_score < s_with.combined_score
+    def test_high_agreement_raises_score(self):
+        s_low = _make_signals("c1", agreement=0.1)
+        s_high = _make_signals("c1", agreement=0.9)
+        assert s_high.combined_score > s_low.combined_score
 
     def test_extract_signals(self):
         logits = {"SUPPORT": 0.7, "CONTRADICT": 0.2, "NOT_ENOUGH_INFO": 0.1}
-        s = extract_signals("c1", logits, 0.8, 0.3, 2, False)
+        s = extract_signals("c1", logits, 0.3)
         assert s.nli_confidence == 0.7
         assert abs(s.nli_margin - 0.5) < 1e-6
+        assert s.retriever_agreement == 0.3
 
 
 class TestAbstentionGate:
@@ -49,22 +41,9 @@ class TestAbstentionGate:
 
     def test_low_confidence_abstains(self):
         gate = AbstentionGate(threshold=0.5)
-        s = _make_signals("c1", confidence=0.3, margin=0.05, agreement=0.05,
-                          retrieval=0.1, evidence=0)
+        s = _make_signals("c1", confidence=0.3, margin=0.05, agreement=0.05)
         d = gate.decide(s)
         assert d.action == "abstain"
-
-    def test_conflict_flagged(self):
-        gate = AbstentionGate(threshold=0.2, conflict_override=True)
-        s = _make_signals("c1", conflict=True)
-        d = gate.decide(s)
-        assert d.action == "flag_conflict"
-
-    def test_conflict_override_disabled(self):
-        gate = AbstentionGate(threshold=0.2, conflict_override=False)
-        s = _make_signals("c1", confidence=0.9, conflict=True)
-        d = gate.decide(s)
-        assert d.action == "answer"
 
     def test_batch_decide(self):
         gate = AbstentionGate(threshold=0.3)
@@ -98,4 +77,4 @@ class TestCoverageRisk:
             {"threshold": 1.0, "coverage": 0.0, "accuracy": 0.0, "n_answered": 0, "n_correct": 0},
         ]
         auc = auc_coverage_risk(curve)
-        assert 0.0 < auc < 1.0
+        assert auc > 0

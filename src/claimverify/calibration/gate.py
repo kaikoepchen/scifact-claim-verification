@@ -9,35 +9,24 @@ from .signals import UncertaintySignals
 
 @dataclass
 class GateDecision:
-    action: str  # "answer", "abstain", "flag_conflict"
+    action: str  # "answer" or "abstain"
     confidence_score: float
     reason: str
 
 
 class AbstentionGate:
-    """Multi-signal abstention gate.
+    """Three-signal abstention gate.
 
-    Uses the combined uncertainty score to decide whether the system
-    is confident enough to answer, or should abstain.
+    Uses the combined uncertainty score (NLI confidence, NLI margin,
+    retriever agreement) to decide whether the system is confident
+    enough to answer or should abstain.
     """
 
-    def __init__(
-        self,
-        threshold: float = 0.4,
-        conflict_override: bool = True,
-    ):
+    def __init__(self, threshold: float = 0.4):
         self.threshold = threshold
-        self.conflict_override = conflict_override
 
     def decide(self, signals: UncertaintySignals) -> GateDecision:
         score = signals.combined_score
-
-        if self.conflict_override and signals.has_conflict:
-            return GateDecision(
-                action="flag_conflict",
-                confidence_score=score,
-                reason="contradicting evidence from multiple sources",
-            )
 
         if score < self.threshold:
             reasons = []
@@ -47,8 +36,6 @@ class AbstentionGate:
                 reasons.append("small margin between top predictions")
             if signals.retriever_agreement < 0.15:
                 reasons.append("retrievers disagree on relevant documents")
-            if signals.evidence_count == 0:
-                reasons.append("no evidence retrieved")
 
             return GateDecision(
                 action="abstain",

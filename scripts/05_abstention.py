@@ -81,10 +81,7 @@ def main():
     console.print(f"Loading NLI model ({args.nli_model})...")
     predictor = VerdictPredictor(model_name=args.nli_model)
 
-    gate = AbstentionGate(
-        threshold=args.threshold,
-        conflict_override=not args.no_conflict_override,
-    )
+    gate = AbstentionGate(threshold=args.threshold)
 
     rrf = ReciprocalRankFusion(k=60)
 
@@ -138,10 +135,7 @@ def main():
             claim_id=claim.claim_id,
             nli_logits={"SUPPORT": agg.support_score, "CONTRADICT": agg.contradict_score,
                         "NOT_ENOUGH_INFO": agg.nei_score},
-            retrieval_score=top_score,
             retriever_agreement=agreement,
-            evidence_count=agg.evidence_count,
-            has_conflict=agg.has_conflict,
         )
         decision = gate.decide(signals)
 
@@ -216,12 +210,9 @@ def main():
 
     n_answer = sum(1 for r in per_claim if r["gate_decision"] == "answer")
     n_abstain = sum(1 for r in per_claim if r["gate_decision"] == "abstain")
-    n_conflict = sum(1 for r in per_claim if r["gate_decision"] == "flag_conflict")
-
     table.add_row("", "", "")
     table.add_row("Claims answered", f"{n_answer}", "")
     table.add_row("Claims abstained", f"{n_abstain}", "")
-    table.add_row("Claims flagged (conflict)", f"{n_conflict}", "")
 
     console.print(table)
 
@@ -244,18 +235,8 @@ def main():
         "gate_stats": {
             "n_answer": n_answer,
             "n_abstain": n_abstain,
-            "n_conflict": n_conflict,
         },
         "coverage_risk_curve": curve,
         "optimal_threshold": optimal,
         "auc_coverage_risk": auc,
-        "per_claim": per_claim,
-    }
-    out_path = results_dir / "05_abstention.json"
-    with open(out_path, "w") as f:
-        json.dump(output, f, indent=2)
-    console.print(f"\nResults saved to {out_path}")
-
-
-if __name__ == "__main__":
-    main()
+   
