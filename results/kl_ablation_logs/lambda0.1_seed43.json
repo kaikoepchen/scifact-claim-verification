@@ -1,0 +1,51 @@
+{
+  "base_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+  "dense_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "lambda_kl": 0.1,
+  "kl_top_k": 3,
+  "kl_every_n": 8,
+  "epochs_run": 10,
+  "lr": 1e-05,
+  "batch_size": 4,
+  "grad_accum": 8,
+  "max_length": 256,
+  "neg_ratio": 3.0,
+  "train_examples": 3561,
+  "dev_examples": 1288,
+  "kl_eligible_claims": 809,
+  "best_epoch": 9,
+  "best_macro_f1": 0.7897382942115664,
+  "epoch_avg_kl_losses": [
+    0.021437364001129125,
+    0.05210461446528768,
+    0.06766482095993417,
+    0.043194919628214916,
+    0.02344696293322806,
+    0.014425774092438866,
+    0.021039749050737352,
+    0.006123905377420555,
+    0.011912341506890575,
+    0.028376506170077535
+  ],
+  "final_metrics": {
+    "accuracy": 0.860248447204969,
+    "macro_f1": 0.7897382942115664,
+    "per_class": {
+      "SUPPORT": {
+        "precision": 0.7510373443983402,
+        "recall": 0.7702127659574468,
+        "f1": 0.7605042016806722
+      },
+      "CONTRADICT": {
+        "precision": 0.696969696969697,
+        "recall": 0.7022900763358778,
+        "f1": 0.6996197718631179
+      },
+      "NEI": {
+        "precision": 0.912568306010929,
+        "recall": 0.9056399132321041,
+        "f1": 0.9090909090909091
+      }
+    }
+  }
+}

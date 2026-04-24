@@ -1,0 +1,51 @@
+{
+  "base_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+  "dense_model": "allenai/specter2_base",
+  "lambda_kl": 0.1,
+  "kl_top_k": 3,
+  "kl_every_n": 8,
+  "epochs_run": 10,
+  "lr": 1e-05,
+  "batch_size": 4,
+  "grad_accum": 8,
+  "max_length": 256,
+  "neg_ratio": 3.0,
+  "train_examples": 3561,
+  "dev_examples": 1288,
+  "kl_eligible_claims": 809,
+  "best_epoch": 8,
+  "best_macro_f1": 0.7884640566373845,
+  "epoch_avg_kl_losses": [
+    0.05921345928826512,
+    0.0934679291362094,
+    0.1019458396041447,
+    0.1126585499428607,
+    0.05819260842389184,
+    0.02560459384823172,
+    0.05897785028112897,
+    0.00625437931123563,
+    0.022953446265687075,
+    0.017615762072661734
+  ],
+  "final_metrics": {
+    "accuracy": 0.8618012422360248,
+    "macro_f1": 0.7884640566373845,
+    "per_class": {
+      "SUPPORT": {
+        "precision": 0.75,
+        "recall": 0.7659574468085106,
+        "f1": 0.7578947368421053
+      },
+      "CONTRADICT": {
+        "precision": 0.6643356643356644,
+        "recall": 0.7251908396946565,
+        "f1": 0.6934306569343066
+      },
+      "NEI": {
+        "precision": 0.9226519337016574,
+        "recall": 0.9056399132321041,
+        "f1": 0.9140667761357417
+      }
+    }
+  }
+}
