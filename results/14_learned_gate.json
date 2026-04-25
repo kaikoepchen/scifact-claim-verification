@@ -1,0 +1,92 @@
+{
+  "n_claims": 188,
+  "n_correct": 138,
+  "baseline_accuracy": 0.734,
+  "hand_tuned": {
+    "auarc": 0.7215,
+    "acc_at_80": {
+      "accuracy": 0.7417,
+      "coverage": 0.8032
+    },
+    "acc_at_90": {
+      "accuracy": 0.7412,
+      "coverage": 0.9043
+    }
+  },
+  "ablation": {
+    "full": {
+      "description": "confidence + margin + agreement",
+      "features": [
+        "nli_confidence",
+        "nli_margin",
+        "retriever_agreement"
+      ],
+      "auarc_mean": 0.7074,
+      "auarc_std": 0.0156,
+      "acc_at_80_mean": 0.7311,
+      "acc_at_80_std": 0.009,
+      "acc_at_90_mean": 0.7376,
+      "acc_at_90_std": 0.0109,
+      "coefficients": {
+        "nli_confidence": 0.8571,
+        "nli_margin": -0.8112,
+        "retriever_agreement": 0.0293
+      },
+      "n_seeds": 5
+    },
+    "no_disagreement": {
+      "description": "confidence + margin",
+      "features": [
+        "nli_confidence",
+        "nli_margin"
+      ],
+      "auarc_mean": 0.7208,
+      "auarc_std": 0.0129,
+      "acc_at_80_mean": 0.7417,
+      "acc_at_80_std": 0.0042,
+      "acc_at_90_mean": 0.7388,
+      "acc_at_90_std": 0.006,
+      "coefficients": {
+        "nli_confidence": 0.5774,
+        "nli_margin": -0.5449
+      },
+      "n_seeds": 5
+    },
+    "disagreement_only": {
+      "description": "agreement only",
+      "features": [
+        "retriever_agreement"
+      ],
+      "auarc_mean": 0.6963,
+      "auarc_std": 0.0133,
+      "acc_at_80_mean": 0.7219,
+      "acc_at_80_std": 0.0111,
+      "acc_at_90_mean": 0.727,
+      "acc_at_90_std": 0.006,
+      "coefficients": {
+        "retriever_agreement": 0.0001
+      },
+      "n_seeds": 5
+    },
+    "confidence_only": {
+      "description": "confidence only",
+      "features": [
+        "nli_confidence"
+      ],
+      "auarc_mean": 0.7252,
+      "auarc_std": 0.0109,
+      "acc_at_80_mean": 0.7431,
+      "acc_at_80_std": 0.0106,
+      "acc_at_90_mean": 0.7435,
+      "acc_at_90_std": 0.006,
+      "coefficients": {
+        "nli_confidence": 0.0005
+      },
+      "n_seeds": 5
+    }
+  },
+  "disagreement_contribution": {
+    "auarc_delta": -0.0134,
+    "acc_at_80_delta": -0.0106
+  }
+}
