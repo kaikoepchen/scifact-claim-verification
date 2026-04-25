@@ -1,271 +1,271 @@
 {
-  "baseline_accuracy": 0.75,
+  "baseline_accuracy": 0.7340425531914894,
   "n_claims_with_evidence": 188,
-  "n_correct_all": 141,
+  "n_correct_all": 138,
   "best_with_disagreement": {
-    "accuracy": 0.8125,
-    "threshold": 0.3843,
-    "coverage": 0.5957
+    "accuracy": 0.7732,
+    "threshold": 0.7084,
+    "coverage": 0.516
   },
   "best_without_disagreement": {
-    "accuracy": 0.8079,
-    "threshold": 0.4057,
-    "coverage": 0.8032
+    "accuracy": 0.7636,
+    "threshold": 0.9069,
+    "coverage": 0.5851
   },
-  "disagreement_contribution": 0.0046,
-  "correlation_agreement_correct": 0.0432,
-  "accuracy_high_agreement": 0.8061,
-  "accuracy_low_agreement": 0.6889,
-  "agreement_gap": 0.1172,
+  "disagreement_contribution": 0.0096,
+  "correlation_agreement_correct": 0.0074,
+  "accuracy_high_agreement": 0.7653,
+  "accuracy_low_agreement": 0.7,
+  "agreement_gap": 0.0653,
   "leaderboard_f1_no_abstention": {
-    "abstract_precision": 0.3113456464379947,
+    "abstract_precision": 0.31216931216931215,
     "abstract_recall": 0.5645933014354066,
-    "abstract_f1": 0.401360544217687,
+    "abstract_f1": 0.4020442930153322,
     "true_positives": 118,
-    "total_predicted": 379,
+    "total_predicted": 378,
     "total_gold": 209
   },
   "leaderboard_f1_with_abstention": {
-    "abstract_precision": 0.3220338983050847,
-    "abstract_recall": 0.45454545454545453,
-    "abstract_f1": 0.3769841269841269,
-    "true_positives": 95,
-    "total_predicted": 295,
+    "abstract_precision": 0.3744493392070485,
+    "abstract_recall": 0.40669856459330145,
+    "abstract_f1": 0.389908256880734,
+    "true_positives": 85,
+    "total_predicted": 227,
     "total_gold": 209
   },
-  "abstention_threshold": 0.3367,
+  "abstention_threshold": 0.6284,
   "coverage_accuracy_curve": [
     {
       "threshold": 0.0,
       "n_answered": 188,
-      "n_correct": 141,
-      "accuracy": 0.75,
-      "coverage": 1.0,
-      "accuracy_gain": 0.0
-    },
-    {
-      "threshold": 0.0241,
-      "n_answered": 188,
-      "n_correct": 141,
-      "accuracy": 0.75,
-      "coverage": 1.0,
-      "accuracy_gain": 0.0
-    },
-    {
-      "threshold": 0.0481,
-      "n_answered": 188,
-      "n_correct": 141,
-      "accuracy": 0.75,
-      "coverage": 1.0,
-      "accuracy_gain": 0.0
-    },
-    {
-      "threshold": 0.0722,
-      "n_answered": 188,
-      "n_correct": 141,
-      "accuracy": 0.75,
-      "coverage": 1.0,
-      "accuracy_gain": 0.0
-    },
-    {
-      "threshold": 0.0962,
-      "n_answered": 188,
-      "n_correct": 141,
-      "accuracy": 0.75,
-      "coverage": 1.0,
-      "accuracy_gain": 0.0
-    },
-    {
-      "threshold": 0.1203,
-      "n_answered": 188,
-      "n_correct": 141,
-      "accuracy": 0.75,
-      "coverage": 1.0,
-      "accuracy_gain": 0.0
-    },
-    {
-      "threshold": 0.1443,
-      "n_answered": 188,
-      "n_correct": 141,
-      "accuracy": 0.75,
-      "coverage": 1.0,
-      "accuracy_gain": 0.0
-    },
-    {
-      "threshold": 0.1684,
-      "n_answered": 185,
       "n_correct": 138,
-      "accuracy": 0.7459,
-      "coverage": 0.984,
-      "accuracy_gain": -0.0041
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
     },
     {
-      "threshold": 0.1924,
-      "n_answered": 183,
+      "threshold": 0.0299,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.0598,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.0898,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.1197,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.1496,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.1795,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.2095,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.2394,
+      "n_answered": 188,
+      "n_correct": 138,
+      "accuracy": 0.734,
+      "coverage": 1.0,
+      "accuracy_gain": 0.0
+    },
+    {
+      "threshold": 0.2693,
+      "n_answered": 186,
       "n_correct": 137,
-      "accuracy": 0.7486,
-      "coverage": 0.9734,
-      "accuracy_gain": -0.0014
+      "accuracy": 0.7366,
+      "coverage": 0.9894,
+      "accuracy_gain": 0.0025
     },
     {
-      "threshold": 0.2165,
-      "n_answered": 180,
-      "n_correct": 136,
-      "accuracy": 0.7556,
-      "coverage": 0.9574,
+      "threshold": 0.2992,
+      "n_answered": 183,
+      "n_correct": 135,
+      "accuracy": 0.7377,
+      "coverage": 0.9734,
+      "accuracy_gain": 0.0037
+    },
+    {
+      "threshold": 0.3291,
+      "n_answered": 181,
+      "n_correct": 133,
+      "accuracy": 0.7348,
+      "coverage": 0.9628,
+      "accuracy_gain": 0.0008
+    },
+    {
+      "threshold": 0.3591,
+      "n_answered": 177,
+      "n_correct": 130,
+      "accuracy": 0.7345,
+      "coverage": 0.9415,
+      "accuracy_gain": 0.0004
+    },
+    {
+      "threshold": 0.389,
+      "n_answered": 174,
+      "n_correct": 129,
+      "accuracy": 0.7414,
+      "coverage": 0.9255,
+      "accuracy_gain": 0.0073
+    },
+    {
+      "threshold": 0.4189,
+      "n_answered": 169,
+      "n_correct": 125,
+      "accuracy": 0.7396,
+      "coverage": 0.8989,
       "accuracy_gain": 0.0056
     },
     {
-      "threshold": 0.2405,
-      "n_answered": 174,
-      "n_correct": 131,
-      "accuracy": 0.7529,
-      "coverage": 0.9255,
-      "accuracy_gain": 0.0029
+      "threshold": 0.4488,
+      "n_answered": 160,
+      "n_correct": 121,
+      "accuracy": 0.7562,
+      "coverage": 0.8511,
+      "accuracy_gain": 0.0222
     },
     {
-      "threshold": 0.2646,
-      "n_answered": 170,
-      "n_correct": 128,
-      "accuracy": 0.7529,
-      "coverage": 0.9043,
-      "accuracy_gain": 0.0029
+      "threshold": 0.4787,
+      "n_answered": 153,
+      "n_correct": 114,
+      "accuracy": 0.7451,
+      "coverage": 0.8138,
+      "accuracy_gain": 0.0111
     },
     {
-      "threshold": 0.2886,
-      "n_answered": 158,
-      "n_correct": 123,
-      "accuracy": 0.7785,
-      "coverage": 0.8404,
-      "accuracy_gain": 0.0285
-    },
-    {
-      "threshold": 0.3127,
-      "n_answered": 140,
-      "n_correct": 113,
-      "accuracy": 0.8071,
-      "coverage": 0.7447,
-      "accuracy_gain": 0.0571
-    },
-    {
-      "threshold": 0.3367,
-      "n_answered": 137,
+      "threshold": 0.5087,
+      "n_answered": 148,
       "n_correct": 111,
-      "accuracy": 0.8102,
-      "coverage": 0.7287,
-      "accuracy_gain": 0.0602
-    },
-    {
-      "threshold": 0.3608,
-      "n_answered": 129,
-      "n_correct": 103,
-      "accuracy": 0.7984,
-      "coverage": 0.6862,
-      "accuracy_gain": 0.0484
-    },
-    {
-      "threshold": 0.3848,
-      "n_answered": 106,
-      "n_correct": 85,
-      "accuracy": 0.8019,
-      "coverage": 0.5638,
-      "accuracy_gain": 0.0519
-    },
-    {
-      "threshold": 0.4089,
-      "n_answered": 72,
-      "n_correct": 55,
-      "accuracy": 0.7639,
-      "coverage": 0.383,
-      "accuracy_gain": 0.0139
-    },
-    {
-      "threshold": 0.4329,
-      "n_answered": 58,
-      "n_correct": 44,
-      "accuracy": 0.7586,
-      "coverage": 0.3085,
-      "accuracy_gain": 0.0086
-    },
-    {
-      "threshold": 0.457,
-      "n_answered": 50,
-      "n_correct": 41,
-      "accuracy": 0.82,
-      "coverage": 0.266,
-      "accuracy_gain": 0.07
-    },
-    {
-      "threshold": 0.481,
-      "n_answered": 35,
-      "n_correct": 27,
-      "accuracy": 0.7714,
-      "coverage": 0.1862,
-      "accuracy_gain": 0.0214
-    },
-    {
-      "threshold": 0.5051,
-      "n_answered": 24,
-      "n_correct": 18,
       "accuracy": 0.75,
+      "coverage": 0.7872,
+      "accuracy_gain": 0.016
+    },
+    {
+      "threshold": 0.5386,
+      "n_answered": 141,
+      "n_correct": 107,
+      "accuracy": 0.7589,
+      "coverage": 0.75,
+      "accuracy_gain": 0.0248
+    },
+    {
+      "threshold": 0.5685,
+      "n_answered": 136,
+      "n_correct": 103,
+      "accuracy": 0.7574,
+      "coverage": 0.7234,
+      "accuracy_gain": 0.0233
+    },
+    {
+      "threshold": 0.5984,
+      "n_answered": 130,
+      "n_correct": 98,
+      "accuracy": 0.7538,
+      "coverage": 0.6915,
+      "accuracy_gain": 0.0198
+    },
+    {
+      "threshold": 0.6284,
+      "n_answered": 125,
+      "n_correct": 95,
+      "accuracy": 0.76,
+      "coverage": 0.6649,
+      "accuracy_gain": 0.026
+    },
+    {
+      "threshold": 0.6583,
+      "n_answered": 117,
+      "n_correct": 88,
+      "accuracy": 0.7521,
+      "coverage": 0.6223,
+      "accuracy_gain": 0.0181
+    },
+    {
+      "threshold": 0.6882,
+      "n_answered": 104,
+      "n_correct": 79,
+      "accuracy": 0.7596,
+      "coverage": 0.5532,
+      "accuracy_gain": 0.0256
+    },
+    {
+      "threshold": 0.7181,
+      "n_answered": 90,
+      "n_correct": 71,
+      "accuracy": 0.7889,
+      "coverage": 0.4787,
+      "accuracy_gain": 0.0548
+    },
+    {
+      "threshold": 0.748,
+      "n_answered": 63,
+      "n_correct": 46,
+      "accuracy": 0.7302,
+      "coverage": 0.3351,
+      "accuracy_gain": -0.0039
+    },
+    {
+      "threshold": 0.778,
+      "n_answered": 24,
+      "n_correct": 17,
+      "accuracy": 0.7083,
       "coverage": 0.1277,
-      "accuracy_gain": 0.0
+      "accuracy_gain": -0.0257
     },
     {
-      "threshold": 0.5291,
-      "n_answered": 16,
-      "n_correct": 13,
-      "accuracy": 0.8125,
-      "coverage": 0.0851,
-      "accuracy_gain": 0.0625
+      "threshold": 0.8079,
+      "n_answered": 12,
+      "n_correct": 8,
+      "accuracy": 0.6667,
+      "coverage": 0.0638,
+      "accuracy_gain": -0.0674
     },
     {
-      "threshold": 0.5532,
-      "n_answered": 13,
-      "n_correct": 10,
-      "accuracy": 0.7692,
-      "coverage": 0.0691,
-      "accuracy_gain": 0.0192
-    },
-    {
-      "threshold": 0.5772,
-      "n_answered": 8,
-      "n_correct": 7,
-      "accuracy": 0.875,
-      "coverage": 0.0426,
-      "accuracy_gain": 0.125
-    },
-    {
-      "threshold": 0.6013,
-      "n_answered": 5,
-      "n_correct": 4,
-      "accuracy": 0.8,
-      "coverage": 0.0266,
-      "accuracy_gain": 0.05
-    },
-    {
-      "threshold": 0.6253,
-      "n_answered": 2,
-      "n_correct": 2,
-      "accuracy": 1.0,
-      "coverage": 0.0106,
-      "accuracy_gain": 0.25
-    },
-    {
-      "threshold": 0.6494,
-      "n_answered": 1,
+      "threshold": 0.8378,
+      "n_answered": 3,
       "n_correct": 1,
-      "accuracy": 1.0,
-      "coverage": 0.0053,
-      "accuracy_gain": 0.25
-    },
-    {
-      "threshold": 0.6734,
-      "n_answered": 1,
-      "n_correct": 1,
-      "accuracy": 1.0,
-      "coverage": 0.0053,
-      "accuracy_gain": 0.25
+      "accuracy": 0.3333,
+      "coverage": 0.016,
+      "accuracy_gain": -0.4007
     }
   ]
 }
