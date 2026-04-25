@@ -1,0 +1,60 @@
+{
+  "dataset": "fever",
+  "base_model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+  "dense_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "config": {
+    "epochs": 7,
+    "batch_size": 4,
+    "grad_accum": 8,
+    "lr": 1e-05,
+    "max_length": 256,
+    "neg_ratio": 3.0,
+    "kl_top_k": 3,
+    "kl_every_n": 8,
+    "max_dev_claims": 500,
+    "max_train_claims": 2000,
+    "max_corpus_docs": 50000,
+    "kl_eligible_claims": 2000
+  },
+  "runs": [
+    {
+      "lambda_kl": 0.0,
+      "epochs_run": 7,
+      "best_epoch": 6,
+      "best_macro_f1": 0.8511105260397837,
+      "final_metrics": {
+        "accuracy": 0.8980484522207268,
+        "macro_f1": 0.8511105260397837,
+        "per_class": {
+          "SUPPORT": {
+            "precision": 0.8199052132701422,
+            "recall": 0.837772397094431,
+            "f1": 0.8287425149700599
+          },
+          "CONTRADICT": {
+            "precision": 0.8125,
+            "recall": 0.771689497716895,
+            "f1": 0.7915690866510539
+          },
+          "NEI": {
+            "precision": 0.930178069353327,
+            "recall": 0.9358793022159358,
+            "f1": 0.9330199764982373
+          }
+        }
+      },
+      "epoch_avg_kl_losses": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "output_dir": "models/joint-kl-fever-lambda0.0",
+      "train_examples": 13432,
+      "dev_examples": 2972
+    }
+  ]
+}

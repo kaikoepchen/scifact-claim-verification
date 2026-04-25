@@ -16,9 +16,12 @@ Run:
 
 import argparse
 import json
+import os
 import random
 import sys
 from pathlib import Path
+
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
@@ -369,14 +372,14 @@ def train_one_lambda(args, lambda_kl, fv, train_retrieval, kl_claim_ids,
 def main():
     parser = argparse.ArgumentParser(description="FEVER KL-disagreement fine-tuning + lambda ablation")
     parser.add_argument("--base-model", default="MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli")
-    parser.add_argument("--epochs", type=int, default=5)
+    parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--grad-accum", type=int, default=8)
     parser.add_argument("--lr", type=float, default=1e-5)
     parser.add_argument("--max-length", type=int, default=256)
     parser.add_argument("--neg-ratio", type=float, default=3.0)
     parser.add_argument("--kl-top-k", type=int, default=3)
-    parser.add_argument("--kl-every-n", type=int, default=4)
+    parser.add_argument("--kl-every-n", type=int, default=8)
     parser.add_argument("--patience", type=int, default=2)
     parser.add_argument("--output-dir-template", default="models/joint-kl-fever-lambda{lambda_kl}")
     parser.add_argument("--seed", type=int, default=42)
