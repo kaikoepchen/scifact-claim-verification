@@ -1,0 +1,100 @@
+{
+  "dataset": "fever",
+  "n_claims": 500,
+  "n_correct": 339,
+  "baseline_accuracy": 0.678,
+  "hand_tuned": {
+    "auarc": 0.6156,
+    "acc_at_80": {
+      "accuracy": 0.685,
+      "coverage": 0.8
+    },
+    "acc_at_90": {
+      "accuracy": 0.6822,
+      "coverage": 0.9
+    }
+  },
+  "ablation": {
+    "full": {
+      "description": "confidence + margin + agreement",
+      "features": [
+        "nli_confidence",
+        "nli_margin",
+        "retriever_agreement"
+      ],
+      "auarc_mean": 0.6528,
+      "auarc_std": 0.0223,
+      "acc_at_80_mean": 0.6735,
+      "acc_at_80_std": 0.0058,
+      "acc_at_90_mean": 0.6733,
+      "acc_at_90_std": 0.006,
+      "coefficients": {
+        "nli_confidence": 0.2085,
+        "nli_margin": -0.2121,
+        "retriever_agreement": -0.005
+      },
+      "n_seeds": 5
+    },
+    "no_disagreement": {
+      "description": "confidence + margin",
+      "features": [
+        "nli_confidence",
+        "nli_margin"
+      ],
+      "auarc_mean": 0.6472,
+      "auarc_std": 0.0229,
+      "acc_at_80_mean": 0.6965,
+      "acc_at_80_std": 0.0121,
+      "acc_at_90_mean": 0.6871,
+      "acc_at_90_std": 0.0072,
+      "coefficients": {
+        "nli_confidence": 0.077,
+        "nli_margin": -0.0801
+      },
+      "n_seeds": 5
+    },
+    "disagreement_only": {
+      "description": "agreement only",
+      "features": [
+        "retriever_agreement"
+      ],
+      "auarc_mean": 0.6487,
+      "auarc_std": 0.008,
+      "acc_at_80_mean": 0.675,
+      "acc_at_80_std": 0.0035,
+      "acc_at_90_mean": 0.6738,
+      "acc_at_90_std": 0.0043,
+      "coefficients": {
+        "retriever_agreement": -0.0045
+      },
+      "n_seeds": 5
+    },
+    "confidence_only": {
+      "description": "confidence only",
+      "features": [
+        "nli_confidence"
+      ],
+      "auarc_mean": 0.6459,
+      "auarc_std": 0.0225,
+      "acc_at_80_mean": 0.697,
+      "acc_at_80_std": 0.0124,
+      "acc_at_90_mean": 0.6907,
+      "acc_at_90_std": 0.0069,
+      "coefficients": {
+        "nli_confidence": -0.0001
+      },
+      "n_seeds": 5
+    }
+  },
+  "disagreement_contribution": {
+    "auarc_delta": 0.0056,
+    "acc_at_80_delta": -0.023
+  },
+  "agreement_split": {
+    "median_agreement": 0.1111,
+    "accuracy_high_agreement": 0.693,
+    "accuracy_low_agreement": 0.6522,
+    "agreement_gap": 0.0409,
+    "correlation_agreement_correct": 0.0005
+  }
+}
