@@ -55,6 +55,72 @@
       "output_dir": "models/joint-kl-fever-lambda0.0",
       "train_examples": 13432,
       "dev_examples": 2972
+    },
+    {
+      "lambda_kl": 0.1,
+      "epochs_run": 6,
+      "best_epoch": 4,
+      "best_macro_f1": 0.8458878422431854,
+      "final_metrics": {
+        "accuracy": 0.8946837146702558,
+        "macro_f1": 0.8458878422431854,
+        "per_class": {
+          "SUPPORT": {
+            "precision": 0.8438287153652393,
+            "recall": 0.8111380145278451,
+            "f1": 0.8271604938271605
+          },
+          "CONTRADICT": {
+            "precision": 0.7957244655581948,
+            "recall": 0.7648401826484018,
+            "f1": 0.7799767171129219
+          },
+          "NEI": {
+            "precision": 0.9233983286908078,
+            "recall": 0.9377652050919377,
+            "f1": 0.9305263157894738
+          }
+        }
+      },
+      "epoch_avg_kl_losses": [
+        0.07326946675395127,
+        0.06404993261031691,
+        0.04791410680175959,
+        0.05159398867442497,
+        0.039945335924590805,
+        0.04248183528635832
+      ],
+      "output_dir": "models/joint-kl-fever-lambda0.1",
+      "train_examples": 13432,
+      "dev_examples": 2972
     }
-  ]
+  ],
+  "config_lambda0_run": {
+    "epochs": 7,
+    "batch_size": 4,
+    "grad_accum": 8,
+    "lr": 1e-05,
+    "max_length": 256,
+    "neg_ratio": 3.0,
+    "kl_top_k": 3,
+    "kl_every_n": 8,
+    "max_dev_claims": 500,
+    "max_train_claims": 2000,
+    "max_corpus_docs": 50000,
+    "kl_eligible_claims": 2000
+  },
+  "config_lambda0.1_run": {
+    "epochs": 7,
+    "batch_size": 4,
+    "grad_accum": 8,
+    "lr": 1e-05,
+    "max_length": 256,
+    "neg_ratio": 3.0,
+    "kl_top_k": 3,
+    "kl_every_n": 8,
+    "max_dev_claims": 500,
+    "max_train_claims": 2000,
+    "max_corpus_docs": 50000,
+    "kl_eligible_claims": 2000
+  }
 }

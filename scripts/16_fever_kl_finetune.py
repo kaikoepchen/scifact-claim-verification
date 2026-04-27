@@ -205,6 +205,8 @@ def train_one_lambda(args, lambda_kl, fv, train_retrieval, kl_claim_ids,
     model.config.id2label = ID2LABEL
     model.config.label2id = LABEL2ID
     model.to(device)
+    model.gradient_checkpointing_enable()
+    model.config.use_cache = False
 
     train_dataset = SentenceLevelDataset(
         fv.train_claims, fv.abstracts, tokenizer,
