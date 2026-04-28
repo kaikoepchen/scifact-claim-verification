@@ -7,6 +7,7 @@ from typing import Optional
 
 from .bm25 import BM25Retriever
 from .dense import DenseRetriever
+from .disagreement import jaccard_at_k
 from .fusion import CrossEncoderReranker, ReciprocalRankFusion
 
 
@@ -33,6 +34,22 @@ class RetrievalConfig:
     reranker_enabled: bool = True
     reranker_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
     reranker_top_k: int = 10
+
+    # Adaptive retrieval
+    adaptive_disagreement_threshold: float = 0.2
+    adaptive_base_top_k: int = 3
+    adaptive_expanded_top_k: int = 10
+    adaptive_jaccard_k: int = 10
+
+
+@dataclass
+class AdaptiveRetrievalResult:
+    """Output of adaptive_retrieve: ranked docs plus the routing signals."""
+
+    results: list[tuple[str, float]]
+    agreement: float
+    depth_used: int
+    expanded: bool
 
 
 class RetrievalPipeline:
@@ -116,6 +133,66 @@ class RetrievalPipeline:
             candidates = candidates[:final_k]
 
         return candidates
+
+    def adaptive_retrieve(
+        self,
+        query: str,
+        disagreement_threshold: Optional[float] = None,
+        base_top_k: Optional[int] = None,
+        expanded_top_k: Optional[int] = None,
+        jaccard_k: Optional[int] = None,
+    ) -> AdaptiveRetrievalResult:
+        """Retrieve with depth that adapts to BM25/dense disagreement.
+
+        Computes Jaccard@k between BM25 top-100 and dense top-100. If the two
+        retrievers disagree (jaccard < threshold) the final depth is widened to
+        ``expanded_top_k``; otherwise it stays at ``base_top_k``. RRF fusion
+        and cross-encoder reranking run at the chosen depth.
+
+        Args:
+            query: Claim text.
+            disagreement_threshold: Override config threshold (default 0.2).
+            base_top_k: Depth used when retrievers agree (default 3).
+            expanded_top_k: Depth used when retrievers disagree (default 10).
+            jaccard_k: Cut-off for the Jaccard agreement signal (default 10).
+
+        Returns:
+            AdaptiveRetrievalResult with the ranked docs, the agreement score,
+            the depth used, and whether the expanded branch was taken.
+        """
+        assert self.bm25 and self.dense, "Both retrievers must be built for adaptive retrieval."
+
+        threshold = (
+            disagreement_threshold
+            if disagreement_threshold is not None
+            else self.config.adaptive_disagreement_threshold
+        )
+        base_k = base_top_k if base_top_k is not None else self.config.adaptive_base_top_k
+        expanded_k = (
+            expanded_top_k if expanded_top_k is not None else self.config.adaptive_expanded_top_k
+        )
+        j_k = jaccard_k if jaccard_k is not None else self.config.adaptive_jaccard_k
+
+        bm25_results = self.bm25.retrieve(query, self.config.bm25_top_k)
+        dense_results = self.dense.retrieve(query, self.config.dense_top_k)
+        agreement = jaccard_at_k(bm25_results, dense_results, k=j_k)
+
+        expanded = agreement < threshold
+        depth = expanded_k if expanded else base_k
+
+        candidates = self.rrf.fuse(bm25_results, dense_results, top_k=depth)
+
+        if self.reranker and self.corpus:
+            results = self.reranker.rerank(query, candidates, self.corpus, top_k=depth)
+        else:
+            results = candidates[:depth]
+
+        return AdaptiveRetrievalResult(
+            results=results,
+            agreement=agreement,
+            depth_used=depth,
+            expanded=expanded,
+        )
 
     def batch_retrieve(
         self,
