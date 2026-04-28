@@ -1,0 +1,146 @@
+{
+  "dataset": "scifact",
+  "n_claims": 300,
+  "base_top_k": 3,
+  "expanded_top_k": 10,
+  "fixed_3": {
+    "n_claims": 300,
+    "n_with_evidence": 188,
+    "doc_recall": 0.8777,
+    "sentence_recall": 0.6776,
+    "verdict_accuracy": 0.734,
+    "avg_docs_per_claim": 3.0
+  },
+  "fixed_10": {
+    "n_claims": 300,
+    "n_with_evidence": 188,
+    "doc_recall": 0.9574,
+    "sentence_recall": 0.7486,
+    "verdict_accuracy": 0.8032,
+    "avg_docs_per_claim": 10.0
+  },
+  "adaptive_sweep": [
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.8777,
+      "sentence_recall": 0.6776,
+      "verdict_accuracy": 0.734,
+      "avg_docs_per_claim": 3.2567,
+      "threshold": 0.05,
+      "n_expanded": 11,
+      "frac_expanded": 0.0367
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.8883,
+      "sentence_recall": 0.6858,
+      "verdict_accuracy": 0.7447,
+      "avg_docs_per_claim": 4.0967,
+      "threshold": 0.1,
+      "n_expanded": 47,
+      "frac_expanded": 0.1567
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.8989,
+      "sentence_recall": 0.6885,
+      "verdict_accuracy": 0.75,
+      "avg_docs_per_claim": 5.4267,
+      "threshold": 0.15,
+      "n_expanded": 104,
+      "frac_expanded": 0.3467
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.9149,
+      "sentence_recall": 0.6995,
+      "verdict_accuracy": 0.7606,
+      "avg_docs_per_claim": 6.78,
+      "threshold": 0.2,
+      "n_expanded": 162,
+      "frac_expanded": 0.54
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.9149,
+      "sentence_recall": 0.6995,
+      "verdict_accuracy": 0.7606,
+      "avg_docs_per_claim": 6.78,
+      "threshold": 0.25,
+      "n_expanded": 162,
+      "frac_expanded": 0.54
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.9202,
+      "sentence_recall": 0.7077,
+      "verdict_accuracy": 0.7713,
+      "avg_docs_per_claim": 7.9933,
+      "threshold": 0.3,
+      "n_expanded": 214,
+      "frac_expanded": 0.7133
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.9309,
+      "sentence_recall": 0.7131,
+      "verdict_accuracy": 0.7819,
+      "avg_docs_per_claim": 8.95,
+      "threshold": 0.35,
+      "n_expanded": 255,
+      "frac_expanded": 0.85
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.9309,
+      "sentence_recall": 0.7131,
+      "verdict_accuracy": 0.7819,
+      "avg_docs_per_claim": 8.95,
+      "threshold": 0.4,
+      "n_expanded": 255,
+      "frac_expanded": 0.85
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.9468,
+      "sentence_recall": 0.735,
+      "verdict_accuracy": 0.7979,
+      "avg_docs_per_claim": 9.58,
+      "threshold": 0.45,
+      "n_expanded": 282,
+      "frac_expanded": 0.94
+    },
+    {
+      "n_claims": 300,
+      "n_with_evidence": 188,
+      "doc_recall": 0.9468,
+      "sentence_recall": 0.735,
+      "verdict_accuracy": 0.7979,
+      "avg_docs_per_claim": 9.58,
+      "threshold": 0.5,
+      "n_expanded": 282,
+      "frac_expanded": 0.94
+    }
+  ],
+  "adaptive_best_threshold": 0.45,
+  "adaptive_best": {
+    "n_claims": 300,
+    "n_with_evidence": 188,
+    "doc_recall": 0.9468,
+    "sentence_recall": 0.735,
+    "verdict_accuracy": 0.7979,
+    "avg_docs_per_claim": 9.58,
+    "threshold": 0.45,
+    "n_expanded": 282,
+    "frac_expanded": 0.94
+  }
+}
